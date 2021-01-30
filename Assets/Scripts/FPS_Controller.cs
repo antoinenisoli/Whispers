@@ -26,8 +26,9 @@ public class FPS_Controller : MonoBehaviour
     [SerializeField] Transform interactionPoint;
     [SerializeField] float interactionRange = 5;
     [SerializeField] float rotSpeed = 1;
+    [SerializeField] Interactable usableItem;
+    InteractableItem inspectedObject;
     bool inspectMode;
-    [SerializeField] Interactable inspectedObject;
 
     private void OnDrawGizmos()
     {
@@ -65,6 +66,17 @@ public class FPS_Controller : MonoBehaviour
         viewCam.transform.rotation = Quaternion.Euler(rotY, viewCam.transform.rotation.eulerAngles.y, viewCam.transform.rotation.eulerAngles.z);
     }
 
+    void ChangeDepth(float value)
+    {
+        if (volume != null)
+        {
+            if (volume.profile.TryGetSettings(out DepthOfField depthOfField))
+            {
+                DOTween.To(() => depthOfField.focusDistance.value, x => depthOfField.focusDistance.value = x, value, 0.3f);
+            }
+        }
+    }
+
     void Interact()
     {
         if (inspectMode)
@@ -77,13 +89,7 @@ public class FPS_Controller : MonoBehaviour
                 inspectMode = false;
                 inspectedObject.UnInspect();
                 inspectedObject = null;
-                if (volume != null)
-                {
-                    if (volume.profile.TryGetSettings(out DepthOfField depthOfField))
-                    {
-                        DOTween.To(() => depthOfField.focusDistance.value, x => depthOfField.focusDistance.value = x, 30, 0.3f);
-                    }
-                }
+                ChangeDepth(30);
             }
         }
         else
@@ -92,30 +98,39 @@ public class FPS_Controller : MonoBehaviour
             bool detectInteract = Physics.Raycast(ray, out RaycastHit hit, interactionRange, interactLayer);
             if (detectInteract && !inspectMode)
             {
-                Interactable isInteractable = hit.collider.gameObject.GetComponent<Interactable>();
+                Interactable isInteractable = hit.collider.gameObject.GetComponentInChildren<Interactable>();
                 if (isInteractable)
                 {
-                    inspectedObject = isInteractable;
-                    inspectedObject.HighLight(true);
-                    if (Input.GetMouseButtonDown(0))
+                    InteractableItem thisItem = hit.collider.gameObject.GetComponentInChildren<InteractableItem>();
+                    InteractableSwitch thisSwitch = hit.collider.gameObject.GetComponentInChildren<InteractableSwitch>();
+                    usableItem = isInteractable;
+                    usableItem.HighLight(true);
+
+                    if (thisItem)
                     {
-                        inspectedObject.Inspect(transform);
-                        inspectMode = true;
-                        if (volume != null)
+                        inspectedObject = thisItem;
+                        if (Input.GetMouseButtonDown(0))
                         {
-                            if (volume.profile.TryGetSettings(out DepthOfField depthOfField))
-                            {
-                                DOTween.To(() => depthOfField.focusDistance.value, x => depthOfField.focusDistance.value = x, inspectedObject.offset, 0.3f);
-                            }
+                            inspectedObject.Inspect(transform);
+                            inspectMode = true;
+                            ChangeDepth(inspectedObject.offset);
+                        }
+                    }
+                    else if (thisSwitch)
+                    {
+                        if (Input.GetMouseButtonDown(0) && !thisSwitch.busy)
+                        {
+                            thisSwitch.Effect();
                         }
                     }
                 }
             }
             else
             {
-                if (inspectedObject)
+                if (usableItem)
                 {
-                    inspectedObject.HighLight(false);
+                    usableItem.HighLight(false);
+                    usableItem = null;
                     inspectedObject = null;
                 }
             }

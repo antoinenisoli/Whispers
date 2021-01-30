@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableVolume : Interactable
+public class PhysicItem : InteractableItem
 {
     public override void Inspect(Transform player)
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Polaroid : Interactable
+public class ReadableItem : InteractableItem
 {
     
 }
