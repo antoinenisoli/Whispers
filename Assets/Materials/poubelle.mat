@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PS1_Shader
+  m_Name: poubelle
   m_Shader: {fileID: 4800000, guid: 447fef9edcd98e346b21881ad3e44014, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
