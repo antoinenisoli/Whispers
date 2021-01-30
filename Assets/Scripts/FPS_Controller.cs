@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
+using DG.Tweening;
 
 public class FPS_Controller : MonoBehaviour
 {
     [SerializeField] Camera viewCam;
+    [SerializeField] Image cursor;
     Rigidbody rb;
     bool isDead;
+    PostProcessVolume volume;
 
     [Header("Movements")]
     [SerializeField] float moveSpeed = 10;
@@ -22,7 +27,7 @@ public class FPS_Controller : MonoBehaviour
     [SerializeField] float interactionRange = 5;
     [SerializeField] float rotSpeed = 1;
     bool inspectMode;
-    Interactable inspectedObject;
+    [SerializeField] Interactable inspectedObject;
 
     private void OnDrawGizmos()
     {
@@ -34,6 +39,7 @@ public class FPS_Controller : MonoBehaviour
     {
         viewCam = Camera.main;
         rb = GetComponent<Rigidbody>();
+        volume = FindObjectOfType<PostProcessVolume>();
     }
 
     void FPS_Move()
@@ -63,39 +69,65 @@ public class FPS_Controller : MonoBehaviour
     {
         if (inspectMode)
         {
-            if (Input.GetMouseButton(0))
-            {
-                inspectedObject.Rotate(rotSpeed);
-            }
+            inspectedObject.HighLight(false);
+            inspectedObject.Rotate(rotSpeed);
 
             if (Input.GetMouseButton(1))
             {
                 inspectMode = false;
                 inspectedObject.UnInspect();
                 inspectedObject = null;
+                if (volume != null)
+                {
+                    if (volume.profile.TryGetSettings(out DepthOfField depthOfField))
+                    {
+                        DOTween.To(() => depthOfField.focusDistance.value, x => depthOfField.focusDistance.value = x, 30, 0.3f);
+                    }
+                }
             }
         }
         else
         {
             Ray ray = viewCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             bool detectInteract = Physics.Raycast(ray, out RaycastHit hit, interactionRange, interactLayer);
-            if (detectInteract)
+            if (detectInteract && !inspectMode)
             {
                 Interactable isInteractable = hit.collider.gameObject.GetComponent<Interactable>();
-                if (Input.GetMouseButtonDown(0) && isInteractable)
+                if (isInteractable)
                 {
                     inspectedObject = isInteractable;
-                    inspectedObject.Inspect(transform);
-                    inspectMode = true;
+                    inspectedObject.HighLight(true);
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        inspectedObject.Inspect(transform);
+                        inspectMode = true;
+                        if (volume != null)
+                        {
+                            if (volume.profile.TryGetSettings(out DepthOfField depthOfField))
+                            {
+                                DOTween.To(() => depthOfField.focusDistance.value, x => depthOfField.focusDistance.value = x, inspectedObject.offset, 0.3f);
+                            }
+                        }
+                    }
                 }
             }
+            else
+            {
+                if (inspectedObject)
+                {
+                    inspectedObject.HighLight(false);
+                    inspectedObject = null;
+                }
+            }
+
+            cursor.gameObject.SetActive(detectInteract && !inspectMode);
         }
     }
 
     private void Update()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = true;
 
         if (!isDead)
         {
