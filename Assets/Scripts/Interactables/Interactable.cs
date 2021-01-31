@@ -1,14 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
-
-public enum InteractionType
-{
-    Polaroid,
-    VolumeObject,
-}
 
 public abstract class Interactable : MonoBehaviour
 {
@@ -18,10 +13,11 @@ public abstract class Interactable : MonoBehaviour
     protected Material baseMat;
     protected MeshRenderer meshRenderer;
     protected Collider thisCollider;
-
-    [Header("Play Dialog")]
+    [SerializeField] SoundEvent soundEvent;
+    public bool done;
     [SerializeField] protected bool playDialog;
-    [SerializeField] protected AudioClip clip;
+    [SerializeField] protected DialogInfo myDialog;
+    [SerializeField] protected Door doorToOpen;
 
     public virtual void Awake()
     {
@@ -29,6 +25,40 @@ public abstract class Interactable : MonoBehaviour
         meshRenderer = GetComponentInChildren<MeshRenderer>();
         thisCollider = GetComponent<Collider>();
         baseMat = meshRenderer.material;
+    }
+
+    public virtual void Start()
+    {
+        EventManager.instance.OnDialog.AddListener(PlayDialog);
+    }
+
+    public void LaunchSoundEvent()
+    {
+        if (!done)
+            StartCoroutine(ExecuteEvent());
+    }
+
+    public void PlayDialog()
+    {
+        if (playDialog)
+            EventManager.instance.OnDialog.Invoke(myDialog);
+    }
+
+    IEnumerator ExecuteEvent()
+    {
+        yield return new WaitForSeconds(soundEvent.delayAfterEvent);
+        if (soundEvent.playSound)
+        {
+            if (soundEvent.soundLocalisation != null)
+                SoundManager.instance.PlayAudio(soundEvent.clip.name, soundEvent.soundLocalisation);
+            else
+                SoundManager.instance.PlayAudio(soundEvent.clip.name, transform);
+        }
+    }
+
+    void PlayDialog(DialogInfo info)
+    {
+        SoundManager.instance.PlayAudio(info.clip.name, transform);
     }
 
     public void HighLight(bool b)

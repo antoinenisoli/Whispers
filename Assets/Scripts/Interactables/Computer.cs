@@ -8,16 +8,18 @@ public class Computer : InteractableItem
 {
     [Header("Computer")]
     [SerializeField] string goodText = "661";
+    [SerializeField] GameObject validedScreen;
     [SerializeField] InputField field;
     [SerializeField] Transform view;
-    bool active;
+    bool inInspection;
     Vector3 camStartPos;
     Quaternion camStartRot;
 
-    private void Start()
+    public override void Awake()
     {
+        base.Awake();
         field.text = "_";
-        field.gameObject.SetActive(false);
+        validedScreen.SetActive(false);
     }
 
     public override void Inspect(Transform player)
@@ -27,8 +29,7 @@ public class Computer : InteractableItem
         viewCam.transform.DORotateQuaternion(view.rotation, 0.3f);
         camStartPos = viewCam.transform.position;
         camStartRot = viewCam.transform.rotation;
-        active = true;
-        field.gameObject.SetActive(true);
+        inInspection = true;
     }
 
     public override void UnInspect()
@@ -36,26 +37,34 @@ public class Computer : InteractableItem
         field.text = "_";
         viewCam.transform.DOMove(camStartPos, 0.1f);
         viewCam.transform.DORotateQuaternion(camStartRot, 0.1f);
-        active = false;
-        field.gameObject.SetActive(false);
+        inInspection = false;
     }
 
-    private void Update()
+    void ManageComputer()
     {
-        if (active)
+        if (inInspection && !done)
         {
             field.ActivateInputField();
             field.Select();
 
             if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
             {
-                if (field.text == goodText)
+                if (field.text.Equals(goodText))
                 {
-                    print("yes");
+                    done = true;
+                    PlayDialog();
+                    validedScreen.SetActive(true);
+                    if (doorToOpen)
+                        doorToOpen.Unlock();
                 }
 
                 field.text = "_";
             }
         }
+    }
+
+    private void Update()
+    {
+        ManageComputer();
     }
 }

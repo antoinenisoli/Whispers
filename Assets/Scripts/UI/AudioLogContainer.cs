@@ -20,8 +20,8 @@ public class AudioLogContainer : MonoBehaviour
 
     IEnumerator End(AudioProfile profile)
     {
-        yield return new WaitForSeconds(profile.myDialog.length);
-        rectTransform.DOLocalMove(basePos, 0.5f);
+        yield return new WaitForSeconds(profile.clip.length);
+        rectTransform.DOMove(basePos, 0.5f);
     }
 
     public void Translation(AudioProfile profile)

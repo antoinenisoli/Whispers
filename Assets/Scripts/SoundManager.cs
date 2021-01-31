@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
     [Serializable]
     class Sound
     {
-        public string soundType;
+        public string soundType => clip.name;
         public AudioClip clip;
         [Range(0, 1)]
         public float volume = 0.5f;

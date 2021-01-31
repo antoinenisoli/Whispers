@@ -5,13 +5,6 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-[Serializable]
-public class AudioProfile
-{
-    public Sprite portrait;
-    public AudioClip myDialog;
-}
-
 public class AudioLog : InteractableSwitch
 {
     [Header("Audio Log")]
@@ -19,18 +12,23 @@ public class AudioLog : InteractableSwitch
 
     IEnumerator End()
     {
-        yield return new WaitForSeconds(audiologProfile.myDialog.length);
+        yield return new WaitForSeconds(audiologProfile.clip.length);
         busy = false;
+        yield return new WaitForSeconds(1);
+        PlayDialog();
     }
 
     public override void Effect()
     {
+        base.Effect();
         if (busy)
             return;
 
+        done = true;
         busy = true;
         StartCoroutine(End());
         EventManager.instance.OnPlayLog.Invoke(audiologProfile);
-        SoundManager.instance.PlayAudio(audiologProfile.myDialog.name, transform);
+        EventManager.instance.OnDialog.Invoke(audiologProfile);
+        SoundManager.instance.PlayAudio(audiologProfile.clip.name, transform);
     }
 }

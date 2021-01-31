@@ -46,8 +46,7 @@ public abstract class InteractableItem : Interactable
 
     public virtual void Inspect(Transform player)
     {
-        if (playDialog)
-            SoundManager.instance.PlayAudio(clip.name, transform);
+        PlayDialog();
 
         rb.isKinematic = true;
         Vector3 centerOfCamera = viewCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0) + Vector3.forward * offset);
@@ -55,7 +54,6 @@ public abstract class InteractableItem : Interactable
 
         Quaternion lookAt = Quaternion.LookRotation(player.position - transform.position);
         Vector3 eulerAngles = lookAt.eulerAngles;
-        eulerAngles.x = 70;
         lookAt.eulerAngles = eulerAngles;
         transform.DORotateQuaternion(lookAt, 0.5f);
     }
@@ -66,5 +64,8 @@ public abstract class InteractableItem : Interactable
         transform.DOMove(basePos, 0.5f);
         transform.DORotateQuaternion(baseRotation, 0.5f);
         transform.localScale = baseScale;
+        LaunchSoundEvent();
+        if (doorToOpen)
+            doorToOpen.Unlock();
     }
 }

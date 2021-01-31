@@ -43,6 +43,16 @@ public class FPS_Controller : MonoBehaviour
         volume = FindObjectOfType<PostProcessVolume>();
     }
 
+    private void Start()
+    {
+        EventManager.instance.onEndGame.AddListener(StopPlayer);
+    }
+
+    void StopPlayer()
+    {
+        //isDead = true;
+    }
+
     void FPS_Move()
     {
         Vector3 horizontalAxis = transform.right * Input.GetAxisRaw("Horizontal");
@@ -99,7 +109,7 @@ public class FPS_Controller : MonoBehaviour
             if (detectInteract && !inspectMode)
             {
                 Interactable isInteractable = hit.collider.gameObject.GetComponentInChildren<Interactable>();
-                if (isInteractable)
+                if (isInteractable && !isInteractable.done)
                 {
                     InteractableItem thisItem = hit.collider.gameObject.GetComponentInChildren<InteractableItem>();
                     InteractableSwitch thisSwitch = hit.collider.gameObject.GetComponentInChildren<InteractableSwitch>();
@@ -118,7 +128,7 @@ public class FPS_Controller : MonoBehaviour
                     }
                     else if (thisSwitch)
                     {
-                        if (Input.GetMouseButtonDown(0) && !thisSwitch.busy)
+                        if (!thisSwitch.busy && Input.GetMouseButtonDown(0))
                         {
                             thisSwitch.Effect();
                         }

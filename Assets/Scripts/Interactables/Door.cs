@@ -9,17 +9,26 @@ public class Door : InteractableSwitch
     [SerializeField] float animDuration = 1;
     [SerializeField] float doorAngle = 120;
     Vector3 startRot;
-    [SerializeField] bool open;
+    bool open;
+    [SerializeField] bool locked;
     Vector3 rotation;
 
-    private void Start()
+    public override void Awake()
     {
+        base.Awake();
         startRot = transform.localRotation.eulerAngles;
     }
 
+    public void Unlock()
+    {
+        locked = false;
+        SoundManager.instance.PlayAudio("UnlockDoor", transform);
+    }
+
     public override void Effect()
-    {        
-        if (!busy)
+    {
+        base.Effect();
+        if (!busy && !locked)
         {
             transform.DOKill();
             open = !open;

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b242217b1e1cece4aba3e069a086ea51, type: 3}
+  m_Name: CroquisDialog
+  m_EditorClassIdentifier: 
+  subText: "That\u2019s the thing we were looking for! It was a kind of monolith\u2026
+    But I can\u2019t remember what happened when we found it ?"
+  clip: {fileID: 8300000, guid: 5bafd74e1b5f7bb4087f1d2310ae15c8, type: 3}

@@ -8,8 +8,12 @@ public class EventManager : MonoBehaviour
 {
     public static EventManager instance;
 
+    public UnityEvent onEndGame = new UnityEvent();
     public class AudioLogEvent : UnityEvent<AudioProfile> { }
     public AudioLogEvent OnPlayLog = new AudioLogEvent();
+
+    public class DialogEvent : UnityEvent<DialogInfo> { }
+    public DialogEvent OnDialog = new DialogEvent();
 
     private void Awake()
     {
