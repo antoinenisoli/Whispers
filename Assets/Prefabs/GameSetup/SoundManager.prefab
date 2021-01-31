@@ -200,3 +200,43 @@ MonoBehaviour:
     pitch: 1
     spatialBlend: 1
     radius: 5
+  - clip: {fileID: 8300000, guid: f35df9c3475c57e43b12dc07ba6acfe9, type: 3}
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 1
+    radius: 5
+  - clip: {fileID: 8300000, guid: 2973e120dccc8c34f90630dd5bacd21c, type: 3}
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 1
+    radius: 5
+  - clip: {fileID: 8300000, guid: 8758a0989138021499a53b89ffb0226d, type: 3}
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 1
+    radius: 5
+  - clip: {fileID: 8300000, guid: a1b910e63e54c7346b0a8c4eae2fac80, type: 3}
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 1
+    radius: 5
+  - clip: {fileID: 8300000, guid: 3fceb5276c8d0544aa487a1dd5786cd4, type: 3}
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 1
+    radius: 5
+  - clip: {fileID: 8300000, guid: 0ed60e5945744bb41a49e20fae917746, type: 3}
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 1
+    radius: 5
+  - clip: {fileID: 8300000, guid: 210db6b3cab6eff4d871a60c189eab90, type: 3}
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 1
+    radius: 5
+  - clip: {fileID: 8300000, guid: 74cf0404a916a6d4c98f840549e1e767, type: 3}
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 1
+    radius: 5

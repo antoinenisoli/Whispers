@@ -5692,6 +5692,11 @@ PrefabInstance:
       propertyPath: soundLocalisation
       value: 
       objectReference: {fileID: 8502100424479464000}
+    - target: {fileID: 6846342916792663150, guid: 558f69dbb1a2d4741af2aabea124fae1,
+        type: 3}
+      propertyPath: locked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6891952826689019047, guid: 558f69dbb1a2d4741af2aabea124fae1,
         type: 3}
       propertyPath: m_Name
@@ -12157,6 +12162,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6846342916792663150, guid: 558f69dbb1a2d4741af2aabea124fae1,
+        type: 3}
+      propertyPath: locked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6891952826689019047, guid: 558f69dbb1a2d4741af2aabea124fae1,
         type: 3}
       propertyPath: m_Name
@@ -15170,6 +15180,11 @@ PrefabInstance:
     - target: {fileID: 6120095266801190429, guid: 558f69dbb1a2d4741af2aabea124fae1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846342916792663150, guid: 558f69dbb1a2d4741af2aabea124fae1,
+        type: 3}
+      propertyPath: locked
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6891952826689019047, guid: 558f69dbb1a2d4741af2aabea124fae1,
@@ -36381,6 +36396,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846342916792663150, guid: 558f69dbb1a2d4741af2aabea124fae1,
+        type: 3}
+      propertyPath: locked
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6891952826689019047, guid: 558f69dbb1a2d4741af2aabea124fae1,
         type: 3}

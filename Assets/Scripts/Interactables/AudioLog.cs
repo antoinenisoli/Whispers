@@ -38,4 +38,10 @@ public class AudioLog : InteractableSwitch
         StartCoroutine(End());
         SoundManager.instance.PlayAudio("AudiologRewind", transform);
     }
+
+    private void Update()
+    {
+        if (!busy)
+            meshRenderer.material = glowMat;
+    }
 }

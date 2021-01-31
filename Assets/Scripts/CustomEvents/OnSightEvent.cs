@@ -6,9 +6,12 @@ public class OnSightEvent : CustomEvent
 {
     [SerializeField] Transform eventArea;
     [SerializeField] protected GameObject creepyThing;
+    [SerializeField] float seeDuration = 1;
+    FPS_Controller player;
 
     private void Start()
     {
+        player = FindObjectOfType<FPS_Controller>();
         if (creepyThing)
             creepyThing.SetActive(false);
     }
@@ -19,7 +22,7 @@ public class OnSightEvent : CustomEvent
             PlaySound();
 
         creepyThing.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(seeDuration);
         creepyThing.SetActive(false);
     }
 
@@ -31,6 +34,7 @@ public class OnSightEvent : CustomEvent
             bool visible = screenPos.z > 0
                 && screenPos.x > 0 && screenPos.x < 1
                 && screenPos.y > 0 && screenPos.y < 1
+                && !Physics.Linecast(player.transform.position, creepyThing.transform.position);
                 ;
 
             if (visible)

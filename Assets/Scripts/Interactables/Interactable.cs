@@ -45,7 +45,7 @@ public abstract class Interactable : MonoBehaviour
 
     public virtual void LaunchSoundEvent()
     {
-        if (!done && !(played && soundEvent.playOnce))
+        if (!(played && soundEvent.playOnce))
             StartCoroutine(ExecuteSoundEvent());
     }
 

@@ -44,9 +44,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5465456505428583939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7bf6702410ad5e40821591415f6bc40, type: 3}
+  m_Script: {fileID: 11500000, guid: 66bdc18ef08fe694fbcb790acbb2bd3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  busy: 0
   done: 0
   glowMat: {fileID: 2100000, guid: 2e9d48fea0654e6499d1961d24bf314c, type: 2}
   playSound: 1
@@ -57,6 +58,7 @@ MonoBehaviour:
   doorToUnlock: {fileID: 0}
   doorToLock: {fileID: 0}
   offset: 0.8
+  doorAnimator: {fileID: 0}
 --- !u!33 &8592085811629159196
 MeshFilter:
   m_ObjectHideFlags: 0

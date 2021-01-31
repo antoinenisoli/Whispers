@@ -11,13 +11,11 @@ public abstract class InteractableItem : Interactable
     Vector3 basePos;
     Quaternion baseRotation;
     Vector3 baseScale;
-    Rigidbody rb;
-    Vector3 posLastFrame;
+    bool isInspected;
 
     public override void Awake()
     {
         base.Awake();
-        rb = GetComponent<Rigidbody>();
         basePos = transform.position;
         baseRotation = transform.rotation;
         baseScale = transform.localScale;
@@ -46,9 +44,8 @@ public abstract class InteractableItem : Interactable
 
     public virtual void Inspect(Transform player)
     {
+        isInspected = true;
         PlayDialog();
-
-        rb.isKinematic = true;
         Vector3 centerOfCamera = viewCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0) + Vector3.forward * offset);
         transform.DOMove(centerOfCamera, 0.5f);
 
@@ -66,7 +63,7 @@ public abstract class InteractableItem : Interactable
 
     public virtual void UnInspect()
     {
-        rb.isKinematic = false;
+        isInspected = false;
         transform.DOMove(basePos, 0.5f);
         transform.DORotateQuaternion(baseRotation, 0.5f);
         transform.localScale = baseScale;
@@ -81,5 +78,11 @@ public abstract class InteractableItem : Interactable
             if (soundEvent.onPut)
                 LaunchSoundEvent();
         }
+    }
+
+    private void Update()
+    {
+        if (!isInspected)
+            meshRenderer.material = glowMat;
     }
 }

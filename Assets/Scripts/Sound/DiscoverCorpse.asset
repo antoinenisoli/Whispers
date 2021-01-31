@@ -16,4 +16,4 @@ MonoBehaviour:
   onHold: 1
   onPut: 0
   delayAfterEvent: 0
-  clip: {fileID: 8300000, guid: 7a0771ec3ee995b4b9cf4b4ea37ffd29, type: 3}
+  clip: {fileID: 8300000, guid: 8758a0989138021499a53b89ffb0226d, type: 3}

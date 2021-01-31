@@ -65,6 +65,8 @@ public class Door : InteractableSwitch
         if (!busy && !locked)
         {
             Switch();
+            rotation = open ? new Vector3(-90, 0, doorAngle) : startRot;
+            transform.DOLocalRotate(rotation, animDuration);
             if (playSound && soundEvent)
             {
                 if (open && soundEvent.onHold)
@@ -81,14 +83,5 @@ public class Door : InteractableSwitch
         yield return new WaitForSeconds(animDuration);
         thisCollider.isTrigger = open;
         busy = false;
-    }
-
-    private void Update()
-    {
-        if (!gameEnded)
-        {
-            rotation = open ? new Vector3(-90, 0, doorAngle) : startRot;
-            transform.DOLocalRotate(rotation, animDuration);
-        }
     }
 }

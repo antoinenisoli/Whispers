@@ -67,6 +67,9 @@ public class Computer : InteractableItem
 
     void ManageComputer()
     {
+        if (!done)
+            meshRenderer.material = glowMat;
+
         if (inInspection && !done)
         {
             field.ActivateInputField();
