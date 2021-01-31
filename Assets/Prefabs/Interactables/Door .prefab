@@ -125,22 +125,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f95f46d22ca96b49808903ccd8afc97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  busy: 0
   done: 0
   glowMat: {fileID: 2100000, guid: 6b817e9a97d8f134ea455c8c3a95b87c, type: 2}
-  playOnce: 0
-  soundEvent:
-    playSound: 0
-    delayAfterEvent: 0
-    clip: {fileID: 0}
-    soundLocalisation: {fileID: 0}
+  playSound: 0
+  soundLocalisation: {fileID: 0}
+  soundEvent: {fileID: 0}
   playDialog: 0
   myDialog: {fileID: 0}
   doorToUnlock: {fileID: 0}
   doorToLock: {fileID: 0}
-  busy: 0
+  locked: 0
   animDuration: 2
   doorAngle: 120
-  locked: 0
 --- !u!33 &4619543447293108791
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -866,7 +866,7 @@ PrefabInstance:
         type: 3}
       propertyPath: doorToLock
       value: 
-      objectReference: {fileID: 1298197105}
+      objectReference: {fileID: 0}
     - target: {fileID: 4920682450158908915, guid: 0394fdb059347554ba2599bcf4dbd830,
         type: 3}
       propertyPath: soundLocalisation
@@ -993,18 +993,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56eab69490b591943950c9b7c1a84cde, type: 3}
---- !u!114 &1298197105 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2799584290220590599, guid: e01c16f601e56ce4e92fb32c4d8d8c73,
-    type: 3}
-  m_PrefabInstance: {fileID: 8502100424235649554}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f95f46d22ca96b49808903ccd8afc97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1375614280 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4996242777312993025, guid: cbf6ae364ae0f864ca923352bc5f1531,
@@ -1381,7 +1369,7 @@ PrefabInstance:
         type: 3}
       propertyPath: doorToUnlock
       value: 
-      objectReference: {fileID: 1298197105}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b92e45cbb4b53749a93d640ddeae408, type: 3}
 --- !u!224 &1814708366 stripped
