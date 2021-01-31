@@ -125,13 +125,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f95f46d22ca96b49808903ccd8afc97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  done: 0
   glowMat: {fileID: 2100000, guid: 6b817e9a97d8f134ea455c8c3a95b87c, type: 2}
+  playOnce: 0
+  soundEvent:
+    playSound: 0
+    delayAfterEvent: 0
+    clip: {fileID: 0}
+    soundLocalisation: {fileID: 0}
   playDialog: 0
-  clip: {fileID: 0}
+  myDialog: {fileID: 0}
+  doorToUnlock: {fileID: 0}
+  doorToLock: {fileID: 0}
   busy: 0
   animDuration: 2
   doorAngle: 120
-  open: 0
+  locked: 0
 --- !u!33 &4619543447293108791
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -218,7 +227,7 @@ Transform:
   m_GameObject: {fileID: 6891952826689019047}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.279302, y: 2.279302, z: 2.279302}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1491926483152534698}
   - {fileID: 3978109459194006212}

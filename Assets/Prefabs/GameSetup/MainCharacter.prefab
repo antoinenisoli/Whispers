@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewCam: {fileID: 2182197434406877066}
-  moveSpeed: 6
+  moveSpeed: 4
   camSensitivity: 150
   camBounds: 60
   walkCadency: 0.5
@@ -56,7 +56,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   interactionPoint: {fileID: 0}
-  interactionRange: 4
+  interactionRange: 2
   rotSpeed: 300
   usableItem: {fileID: 0}
 --- !u!136 &2182197433962588473
@@ -69,7 +69,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.75
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -160,7 +160,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 73
   orthographic: 0

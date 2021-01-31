@@ -25,6 +25,11 @@ public abstract class CustomEvent : MonoBehaviour
         if (character && !ready)
         {
             DoEvent();
+            if (playSound && soundEvent)
+            {
+                if (soundEvent.onHold)
+                    PlaySound();
+            }
         }
     }
 
@@ -50,10 +55,5 @@ public abstract class CustomEvent : MonoBehaviour
     public virtual void DoEvent()
     {
         ready = true;
-        if (playSound && soundEvent)
-        {
-            if (soundEvent.onHold)
-                PlaySound();
-        }
     }
 }

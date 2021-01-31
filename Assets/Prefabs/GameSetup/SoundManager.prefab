@@ -146,12 +146,12 @@ MonoBehaviour:
     spatialBlend: 1
     radius: 10
   - clip: {fileID: 8300000, guid: 781f40eb64c894a43bfdd7be0a24d678, type: 3}
-    volume: 0.188
+    volume: 0.2
     pitch: 1
     spatialBlend: 1
-    radius: 10
+    radius: 5
   - clip: {fileID: 8300000, guid: 8e046c7428d025d4d98d15ae055d1638, type: 3}
-    volume: 0.188
+    volume: 0.2
     pitch: 1
     spatialBlend: 1
     radius: 10
@@ -162,6 +162,41 @@ MonoBehaviour:
     radius: 10
   - clip: {fileID: 8300000, guid: 747d44f73debfe148bfe644f8e695f7f, type: 3}
     volume: 0.1
+    pitch: 1
+    spatialBlend: 1
+    radius: 5
+  - clip: {fileID: 8300000, guid: 3dfd4c0b85e154341b1af9a35b1f9d37, type: 3}
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 0
+    radius: 5
+  - clip: {fileID: 8300000, guid: 2937a89a59631204f89c31dbddc59598, type: 3}
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 1
+    radius: 5
+  - clip: {fileID: 8300000, guid: 2937a89a59631204f89c31dbddc59598, type: 3}
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 1
+    radius: 5
+  - clip: {fileID: 8300000, guid: 7a0771ec3ee995b4b9cf4b4ea37ffd29, type: 3}
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 1
+    radius: 5
+  - clip: {fileID: 8300000, guid: 3f36b16825473704299ba006a08e08ef, type: 3}
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 1
+    radius: 5
+  - clip: {fileID: 8300000, guid: 0c1615e719cd3cb40a628defa8b1bc8c, type: 3}
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 1
+    radius: 5
+  - clip: {fileID: 8300000, guid: ea48b0e80b6d9a543ae1c70f4d5755b8, type: 3}
+    volume: 0.2
     pitch: 1
     spatialBlend: 1
     radius: 5

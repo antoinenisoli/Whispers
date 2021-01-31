@@ -11,6 +11,7 @@ public class Door : InteractableSwitch
     Vector3 startRot;
     bool open;
     Vector3 rotation;
+    bool gameEnded;
 
     public override void Awake()
     {
@@ -18,9 +19,23 @@ public class Door : InteractableSwitch
         startRot = transform.localRotation.eulerAngles;
     }
 
+    public override void Start()
+    {
+        base.Start();
+        EventManager.instance.onEndGame.AddListener(FinalLock);
+    }
+
+    void FinalLock()
+    {
+        gameEnded = true;
+        thisCollider.isTrigger = false;
+        transform.DOLocalRotate(startRot, 0.3f);
+    }
+
     public void Unlock()
     {
         locked = false;
+        open = true;
         SoundManager.instance.PlayAudio("UnlockDoor", transform);
     }
 
@@ -28,6 +43,7 @@ public class Door : InteractableSwitch
     {
         locked = true;
         transform.DOKill();
+        thisCollider.isTrigger = false;
         open = false;
         if (open)
             SoundManager.instance.PlayAudio("DoorSqueak", transform);
@@ -69,7 +85,10 @@ public class Door : InteractableSwitch
 
     private void Update()
     {
-        rotation = open ? new Vector3(-90, 0, doorAngle) : startRot;
-        transform.DOLocalRotate(rotation, animDuration);
+        if (!gameEnded)
+        {
+            rotation = open ? new Vector3(-90, 0, doorAngle) : startRot;
+            transform.DOLocalRotate(rotation, animDuration);
+        }
     }
 }

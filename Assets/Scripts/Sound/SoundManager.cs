@@ -50,6 +50,7 @@ public class SoundManager : MonoBehaviour
         randomDelay = UnityEngine.Random.Range(randomInterval.x, randomInterval.y);
         lastSource = GenerateSound(globalAmbient);
         lastSource.loop = true;
+        lastSource.volume = 0.25f;
         lastSource.Play();
     }
 
@@ -71,19 +72,21 @@ public class SoundManager : MonoBehaviour
             lastSource.minDistance = thisSound.radius;
             lastSource.dopplerLevel = 0;
             lastSource.pitch = thisSound.pitch;
+            sound.gameObject.AddComponent<SelfDestroySFX>();
             lastSource.Play();
         }
         else
             print("There is no song at this name : " + name);
     }
 
-    public void RandomStep(Transform target)
+    public void RandomStep()
     {
         int random = UnityEngine.Random.Range(0, walkSteps.Length);
         AudioClip step = walkSteps[random];
         lastSource = GenerateSound(step);
         lastSource.pitch = UnityEngine.Random.Range(0.75f, 1);
         lastSource.Play();
+        lastSource.gameObject.AddComponent<SelfDestroySFX>();
     }
 
     AudioSource GenerateSound(AudioClip clip)
@@ -108,8 +111,9 @@ public class SoundManager : MonoBehaviour
         randomDelay = UnityEngine.Random.Range(randomInterval.x, randomInterval.y);
         print(randomDelay);
         int random = UnityEngine.Random.Range(0, randomSounds.Length);
-        GenerateSound(randomSounds[random]);
+        lastSource = GenerateSound(randomSounds[random]);
         lastSource.Play();
+        lastSource.gameObject.AddComponent<SelfDestroySFX>();
         delay = 0;
     }
 

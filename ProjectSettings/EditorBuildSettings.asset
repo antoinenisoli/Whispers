@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: aadda1ad18132f2438f3b26ebd3054c6
   - enabled: 1
-    path: Assets/Scenes/AntoineScene.unity
-    guid: 5b3cf983f5a659c4b8eec8fba2a792b6
+    path: Assets/Scenes/Level_1.unity
+    guid: 9276ca067e96dbc43a77b3a8eff3ee48
   m_configObjects: {}

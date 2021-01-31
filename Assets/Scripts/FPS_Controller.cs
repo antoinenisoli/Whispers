@@ -77,7 +77,7 @@ public class FPS_Controller : MonoBehaviour
             if (timer > walkCadency)
             {
                 timer = 0;
-                SoundManager.instance.RandomStep(transform);
+                SoundManager.instance.RandomStep();
             }
         }
         else
@@ -180,6 +180,7 @@ public class FPS_Controller : MonoBehaviour
     private void Update()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         if (!isDead)
         {
             Interact();

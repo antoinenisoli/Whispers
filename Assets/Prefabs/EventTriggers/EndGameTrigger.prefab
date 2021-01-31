@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d06f5221874b664e986d9c7c147bf1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playSound: 0
+  playSound: 1
   soundLocalisation: {fileID: 0}
   soundEvent: {fileID: 11400000, guid: 9ab2baf74a800684580357c51daea2a8, type: 2}
   fadeScreen: {fileID: 0}

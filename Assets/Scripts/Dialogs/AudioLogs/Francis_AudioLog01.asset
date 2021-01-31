@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subText: "We found the monolith, the expedition is a success. Jack fainted as soon
     as he saw the monolith. I\u2019d better keep an eye on him\u2026"
-  clip: {fileID: 8300000, guid: 150d920354d3f04488f54eb71514ea82, type: 3}
+  clip: {fileID: 8300000, guid: 3dfd4c0b85e154341b1af9a35b1f9d37, type: 3}
   portrait: {fileID: 21300000, guid: 73f0084e1018747479ccac871889fa43, type: 3}
