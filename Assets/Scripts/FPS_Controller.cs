@@ -19,7 +19,9 @@ public class FPS_Controller : MonoBehaviour
     [SerializeField] float moveSpeed = 10;
     [SerializeField] float camSensitivity = 150;
     [SerializeField] float camBounds = 40;
+    [SerializeField] [Range(0,1)] float walkCadency = 1f;
     float rotY;
+    float timer;
 
     [Header("Interactions")]
     [SerializeField] LayerMask interactLayer;
@@ -46,6 +48,7 @@ public class FPS_Controller : MonoBehaviour
     private void Start()
     {
         EventManager.instance.onEndGame.AddListener(StopPlayer);
+        EventManager.instance.onGameStart.Invoke();
     }
 
     void StopPlayer()
@@ -62,6 +65,18 @@ public class FPS_Controller : MonoBehaviour
         Vector3 move = normalized * moveSpeed;
         move.y = 0;
         rb.velocity = new Vector3(move.x, rb.velocity.y, move.z);
+
+        if (move.magnitude > 0.1f)
+        {
+            timer += Time.deltaTime;
+            if (timer > walkCadency)
+            {
+                timer = 0;
+                SoundManager.instance.RandomStep(transform);
+            }
+        }
+        else
+            timer = walkCadency/2;
     }
 
     void CameraControl()
@@ -145,15 +160,14 @@ public class FPS_Controller : MonoBehaviour
                 }
             }
 
-            cursor.gameObject.SetActive(detectInteract && !inspectMode);
+            if (cursor)
+                cursor.gameObject.SetActive(detectInteract && !inspectMode);
         }
     }
 
     private void Update()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = true;
-
         if (!isDead)
         {
             Interact();

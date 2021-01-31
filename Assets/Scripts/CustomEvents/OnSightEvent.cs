@@ -5,6 +5,26 @@ using UnityEngine;
 public class OnSightEvent : CustomEvent
 {
     [SerializeField] Transform eventArea;
+    [SerializeField] protected GameObject creepyThing;
+    [SerializeField] bool onEnter;
+
+    private void Start()
+    {
+        if (creepyThing)
+            creepyThing.SetActive(false);
+    }
+
+    public override void DoEvent()
+    {
+        base.DoEvent();
+        if (soundEvent.playSound && onEnter)
+        {
+            if (soundEvent.soundLocalisation != null)
+                SoundManager.instance.PlayAudio(soundEvent.clip.name, soundEvent.soundLocalisation);
+            else
+                SoundManager.instance.PlayAudio(soundEvent.clip.name, transform);
+        }
+    }
 
     public IEnumerator ExecuteEvent()
     {
@@ -12,7 +32,7 @@ public class OnSightEvent : CustomEvent
         yield return new WaitForSeconds(0.5f);
         creepyThing.SetActive(false);
         yield return new WaitForSeconds(soundEvent.delayAfterEvent);
-        if (soundEvent.playSound)
+        if (soundEvent.playSound && !onEnter)
         {
             if (soundEvent.soundLocalisation != null)
                 SoundManager.instance.PlayAudio(soundEvent.clip.name, soundEvent.soundLocalisation);

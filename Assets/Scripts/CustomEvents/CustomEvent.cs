@@ -14,17 +14,14 @@ public class SoundEvent
 
 public abstract class CustomEvent : MonoBehaviour
 {
-    [SerializeField] protected GameObject creepyThing;
     [SerializeField] protected SoundEvent soundEvent;
     protected bool done;
     protected bool ready;
     protected Camera viewCam;
 
-    public void Awake()
+    public virtual void Awake()
     {
         viewCam = Camera.main;
-        if (creepyThing)
-            creepyThing.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)

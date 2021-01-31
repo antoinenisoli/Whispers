@@ -9,15 +9,24 @@ public abstract class Interactable : MonoBehaviour
 {
     [Header("Interactable")]
     protected Camera viewCam;
+    public bool done;
     [SerializeField] protected Material glowMat;
     protected Material baseMat;
     protected MeshRenderer meshRenderer;
     protected Collider thisCollider;
-    [SerializeField] SoundEvent soundEvent;
-    public bool done;
+
+    [Header("Sound Event")]
+    [SerializeField] protected bool playOnce;
+    protected bool played;
+    [SerializeField] protected SoundEvent soundEvent;
+
+    [Header("Dialog")]
     [SerializeField] protected bool playDialog;
     [SerializeField] protected DialogInfo myDialog;
-    [SerializeField] protected Door doorToOpen;
+
+    [Header("Doors")]
+    [SerializeField] protected Door doorToUnlock;
+    [SerializeField] protected Door doorToLock;
 
     public virtual void Awake()
     {
@@ -32,10 +41,10 @@ public abstract class Interactable : MonoBehaviour
         EventManager.instance.OnDialog.AddListener(PlayDialog);
     }
 
-    public void LaunchSoundEvent()
+    public virtual void LaunchSoundEvent()
     {
-        if (!done)
-            StartCoroutine(ExecuteEvent());
+        if (!done && !(played && playOnce))
+            StartCoroutine(ExecuteSoundEvent());
     }
 
     public void PlayDialog()
@@ -44,11 +53,12 @@ public abstract class Interactable : MonoBehaviour
             EventManager.instance.OnDialog.Invoke(myDialog);
     }
 
-    IEnumerator ExecuteEvent()
+    public IEnumerator ExecuteSoundEvent()
     {
         yield return new WaitForSeconds(soundEvent.delayAfterEvent);
         if (soundEvent.playSound)
         {
+            played = true;
             if (soundEvent.soundLocalisation != null)
                 SoundManager.instance.PlayAudio(soundEvent.clip.name, soundEvent.soundLocalisation);
             else

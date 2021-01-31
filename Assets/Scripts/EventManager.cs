@@ -8,6 +8,7 @@ public class EventManager : MonoBehaviour
 {
     public static EventManager instance;
 
+    public UnityEvent onGameStart = new UnityEvent();
     public UnityEvent onEndGame = new UnityEvent();
     public class AudioLogEvent : UnityEvent<AudioProfile> { }
     public AudioLogEvent OnPlayLog = new AudioLogEvent();

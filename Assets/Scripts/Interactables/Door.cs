@@ -10,7 +10,7 @@ public class Door : InteractableSwitch
     [SerializeField] float doorAngle = 120;
     Vector3 startRot;
     bool open;
-    [SerializeField] bool locked;
+    public bool locked;
     Vector3 rotation;
 
     public override void Awake()
@@ -25,14 +25,32 @@ public class Door : InteractableSwitch
         SoundManager.instance.PlayAudio("UnlockDoor", transform);
     }
 
+    public void Lock()
+    {
+        locked = true;
+        transform.DOKill();
+        open = false;
+        if (open)
+            SoundManager.instance.PlayAudio("DoorSqueak", transform);
+
+        StartCoroutine(Reset());
+        SoundManager.instance.PlayAudio("LockDoor", transform);
+    }
+
+    void Switch()
+    {
+        transform.DOKill();
+        open = !open;
+        SoundManager.instance.PlayAudio("DoorSqueak", transform);
+        StartCoroutine(Reset());
+    }
+
     public override void Effect()
     {
         base.Effect();
         if (!busy && !locked)
         {
-            transform.DOKill();
-            open = !open;
-            StartCoroutine(Reset());
+            Switch();
         }
     }
 

@@ -54,8 +54,11 @@ public class Computer : InteractableItem
                     done = true;
                     PlayDialog();
                     validedScreen.SetActive(true);
-                    if (doorToOpen)
-                        doorToOpen.Unlock();
+                    if (doorToUnlock)
+                        doorToUnlock.Unlock();
+
+                    if (doorToLock)
+                        doorToLock.Lock();
                 }
 
                 field.text = "_";

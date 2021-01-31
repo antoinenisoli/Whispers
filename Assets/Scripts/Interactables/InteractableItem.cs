@@ -65,7 +65,10 @@ public abstract class InteractableItem : Interactable
         transform.DORotateQuaternion(baseRotation, 0.5f);
         transform.localScale = baseScale;
         LaunchSoundEvent();
-        if (doorToOpen)
-            doorToOpen.Unlock();
+        if (doorToUnlock && doorToUnlock.locked)
+            doorToUnlock.Unlock();
+
+        if (doorToLock && !doorToLock.locked)
+            doorToLock.Lock();
     }
 }

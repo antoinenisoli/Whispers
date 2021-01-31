@@ -19,6 +19,7 @@ public class SoundManager : MonoBehaviour
     }
 
     public static SoundManager instance;
+    [SerializeField] AudioClip[] walkSteps;
     [SerializeField] Sound[] sounds = new Sound[1];
     Dictionary<string, Sound> soundsLibrary = new Dictionary<string, Sound>();
     AudioSource lastSource;
@@ -57,5 +58,25 @@ public class SoundManager : MonoBehaviour
         }
         else
             print("There is no song at this name : " + name);
+    }
+
+    public void RandomStep(Transform target)
+    {
+        int random = UnityEngine.Random.Range(0, walkSteps.Length);
+        AudioClip step = walkSteps[random];
+        GameObject sound = new GameObject();
+        sound.transform.position = target.position;
+        sound.name = step.name;
+        sound.transform.parent = transform;
+        if (lastSource != null && lastSource.clip == step && lastSource.isPlaying)
+            Destroy(lastSource.gameObject);
+
+        lastSource = sound.AddComponent<AudioSource>();
+        lastSource.clip = step;
+        lastSource.volume = 0.1f;
+        lastSource.pitch = UnityEngine.Random.Range(0.75f, 1);
+        lastSource.spatialBlend = 0;
+        lastSource.dopplerLevel = 0;
+        lastSource.Play();
     }
 }
