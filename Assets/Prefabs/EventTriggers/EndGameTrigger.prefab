@@ -57,12 +57,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d06f5221874b664e986d9c7c147bf1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creepyThing: {fileID: 0}
-  soundEvent:
-    playSound: 0
-    delayAfterEvent: 0
-    clip: {fileID: 0}
-    soundLocalisation: {fileID: 0}
+  playSound: 0
+  soundLocalisation: {fileID: 0}
+  soundEvent: {fileID: 11400000, guid: 9ab2baf74a800684580357c51daea2a8, type: 2}
   fadeScreen: {fileID: 0}
   endText: {fileID: 0}
-  endingDuration: 5
+  fadeDuration: 5
+  doorToLock: {fileID: 0}

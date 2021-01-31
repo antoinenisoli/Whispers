@@ -20,6 +20,12 @@ public class AudioLog : InteractableSwitch
         busy = false;
         yield return new WaitForSeconds(1);
         PlayDialog();
+
+        if (playSound && soundEvent)
+        {
+            if (soundEvent.onPut)
+                LaunchSoundEvent();
+        }
     }
 
     public override void Effect()

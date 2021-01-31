@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5465456505428584444}
   - component: {fileID: 8592085811629159196}
   - component: {fileID: 5825916068929243094}
-  - component: {fileID: 5465456505428583949}
+  - component: {fileID: 3589500649791858396}
   - component: {fileID: 5465456505428583938}
   m_Layer: 9
   m_Name: MagneticCard
@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5465456505428583939}
-  m_LocalRotation: {x: -0.0000000107872795, y: 0.7071068, z: 0.7071068, w: 0.000000029802326}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.33036858, y: 0.5077199, z: 0.0027072704}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 180.00002}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5465456505428584444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,16 +47,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7bf6702410ad5e40821591415f6bc40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowMat: {fileID: 2100000, guid: 2e9d48fea0654e6499d1961d24bf314c, type: 2}
-  soundEvent:
-    playSound: 0
-    delayAfterEvent: 0
-    clip: {fileID: 0}
-    soundLocalisation: {fileID: 0}
   done: 0
+  glowMat: {fileID: 2100000, guid: 2e9d48fea0654e6499d1961d24bf314c, type: 2}
+  playSound: 1
+  soundLocalisation: {fileID: 4653031025568087225}
+  soundEvent: {fileID: 11400000, guid: b109be5c82e7f0b46b54999b66b0d24c, type: 2}
   playDialog: 1
   myDialog: {fileID: 11400000, guid: b8008c1426535e14eb4d335c627b2f11, type: 2}
-  doorToOpen: {fileID: 0}
+  doorToUnlock: {fileID: 0}
+  doorToLock: {fileID: 0}
   offset: 0.8
 --- !u!33 &8592085811629159196
 MeshFilter:
@@ -65,7 +64,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5465456505428583939}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 2028206586088690165, guid: a6dbfb083ba4ec64e9fe745e07c98d0f, type: 3}
 --- !u!23 &5825916068929243094
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -105,7 +104,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5465456505428583949
+--- !u!64 &3589500649791858396
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +117,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 2028206586088690165, guid: a6dbfb083ba4ec64e9fe745e07c98d0f, type: 3}
 --- !u!54 &5465456505428583938
 Rigidbody:
   m_ObjectHideFlags: 0

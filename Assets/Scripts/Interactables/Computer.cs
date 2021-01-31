@@ -30,6 +30,12 @@ public class Computer : InteractableItem
         camStartPos = viewCam.transform.position;
         camStartRot = viewCam.transform.rotation;
         inInspection = true;
+
+        if (playSound && soundEvent)
+        {
+            if (soundEvent.onHold)
+                LaunchSoundEvent();
+        }
     }
 
     public override void UnInspect()
@@ -38,6 +44,25 @@ public class Computer : InteractableItem
         viewCam.transform.DOMove(camStartPos, 0.1f);
         viewCam.transform.DORotateQuaternion(camStartRot, 0.1f);
         inInspection = false;
+
+        if (playSound && soundEvent)
+        {
+            if (soundEvent.onPut)
+                LaunchSoundEvent();
+        }
+    }
+
+    IEnumerator Door()
+    {
+        yield return new WaitForSeconds(1);
+        if (doorToUnlock)
+            doorToUnlock.Unlock();
+
+        if (doorToLock)
+        {
+            doorToLock.Lock();
+            SoundManager.instance.PlayAudio("LoudDoorClap", transform);
+        }
     }
 
     void ManageComputer()
@@ -54,11 +79,11 @@ public class Computer : InteractableItem
                     done = true;
                     PlayDialog();
                     validedScreen.SetActive(true);
-                    if (doorToUnlock)
-                        doorToUnlock.Unlock();
-
-                    if (doorToLock)
-                        doorToLock.Lock();
+                    StartCoroutine(Door());
+                }
+                else
+                {
+                    SoundManager.instance.PlayAudio("WrongCode", transform);
                 }
 
                 field.text = "_";

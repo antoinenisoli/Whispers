@@ -10,7 +10,9 @@ using DG.Tweening;
 public class FPS_Controller : MonoBehaviour
 {
     [SerializeField] Camera viewCam;
-    [SerializeField] Image cursor;
+    CursorManager cursor;
+    Drunk drunk;
+    bool doorLocked;
     Rigidbody rb;
     bool isDead;
     PostProcessVolume volume;
@@ -40,9 +42,12 @@ public class FPS_Controller : MonoBehaviour
 
     private void Awake()
     {
+        cursor = FindObjectOfType<CursorManager>();
         viewCam = Camera.main;
         rb = GetComponent<Rigidbody>();
         volume = FindObjectOfType<PostProcessVolume>();
+        drunk = viewCam.GetComponent<Drunk>();
+        drunk.enabled = false;
     }
 
     private void Start()
@@ -53,7 +58,7 @@ public class FPS_Controller : MonoBehaviour
 
     void StopPlayer()
     {
-        //isDead = true;
+        drunk.enabled = true;
     }
 
     void FPS_Move()
@@ -129,10 +134,11 @@ public class FPS_Controller : MonoBehaviour
                     InteractableItem thisItem = hit.collider.gameObject.GetComponentInChildren<InteractableItem>();
                     InteractableSwitch thisSwitch = hit.collider.gameObject.GetComponentInChildren<InteractableSwitch>();
                     usableItem = isInteractable;
-                    usableItem.HighLight(true);
+                    doorLocked = thisSwitch && thisSwitch.locked;
 
-                    if (thisItem)
+                    if (thisItem && !thisItem.done)
                     {
+                        usableItem.HighLight(true);
                         inspectedObject = thisItem;
                         if (Input.GetMouseButtonDown(0))
                         {
@@ -141,8 +147,9 @@ public class FPS_Controller : MonoBehaviour
                             ChangeDepth(inspectedObject.offset);
                         }
                     }
-                    else if (thisSwitch)
-                    {
+                    else if (thisSwitch && !thisSwitch.locked)
+                    {                        
+                        usableItem.HighLight(true);
                         if (!thisSwitch.busy && Input.GetMouseButtonDown(0))
                         {
                             thisSwitch.Effect();
@@ -152,6 +159,8 @@ public class FPS_Controller : MonoBehaviour
             }
             else
             {
+                doorLocked = false;
+
                 if (usableItem)
                 {
                     usableItem.HighLight(false);
@@ -161,7 +170,10 @@ public class FPS_Controller : MonoBehaviour
             }
 
             if (cursor)
+            {
+                cursor.Lock(doorLocked);
                 cursor.gameObject.SetActive(detectInteract && !inspectMode);
+            }
         }
     }
 

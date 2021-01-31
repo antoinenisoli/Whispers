@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2542363682580380131}
   m_LocalRotation: {x: 0.50000006, y: 0.4999999, z: 0.50000006, w: -0.50000006}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1620555, y: 0.825929, z: 1.1620555}
+  m_LocalScale: {x: 0.4708765, y: 0.3346747, z: 0.4708765}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -47,15 +47,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7bf6702410ad5e40821591415f6bc40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowMat: {fileID: 2100000, guid: b29dffc12fc26984cb9a40d63ca2151c, type: 2}
-  soundEvent:
-    playSound: 0
-    delayAfterEvent: 0
-    clip: {fileID: 0}
-    soundLocalisation: {fileID: 0}
   done: 0
+  glowMat: {fileID: 2100000, guid: b29dffc12fc26984cb9a40d63ca2151c, type: 2}
+  playSound: 0
+  soundLocalisation: {fileID: 0}
+  soundEvent: {fileID: 0}
   playDialog: 1
   myDialog: {fileID: 11400000, guid: 0d0f2e940711d224490e3ff4cae64b5a, type: 2}
+  doorToUnlock: {fileID: 0}
+  doorToLock: {fileID: 0}
   offset: 0.8
 --- !u!33 &2282271083055934716
 MeshFilter:

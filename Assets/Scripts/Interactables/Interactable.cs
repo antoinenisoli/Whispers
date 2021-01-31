@@ -9,6 +9,7 @@ public abstract class Interactable : MonoBehaviour
 {
     [Header("Interactable")]
     protected Camera viewCam;
+    public bool busy;
     public bool done;
     [SerializeField] protected Material glowMat;
     protected Material baseMat;
@@ -16,8 +17,9 @@ public abstract class Interactable : MonoBehaviour
     protected Collider thisCollider;
 
     [Header("Sound Event")]
-    [SerializeField] protected bool playOnce;
+    [SerializeField] protected bool playSound;
     protected bool played;
+    [SerializeField] Transform soundLocalisation;
     [SerializeField] protected SoundEvent soundEvent;
 
     [Header("Dialog")]
@@ -43,27 +45,34 @@ public abstract class Interactable : MonoBehaviour
 
     public virtual void LaunchSoundEvent()
     {
-        if (!done && !(played && playOnce))
+        if (!done && !(played && soundEvent.playOnce))
             StartCoroutine(ExecuteSoundEvent());
     }
 
     public void PlayDialog()
     {
-        if (playDialog)
+        if (playDialog && !busy)
+        {
             EventManager.instance.OnDialog.Invoke(myDialog);
+            busy = true;
+            StartCoroutine(Reset());
+        }
+    }
+
+    IEnumerator Reset()
+    {
+        yield return new WaitForSeconds(myDialog.clip.length);
+        busy = false;
     }
 
     public IEnumerator ExecuteSoundEvent()
     {
         yield return new WaitForSeconds(soundEvent.delayAfterEvent);
-        if (soundEvent.playSound)
-        {
-            played = true;
-            if (soundEvent.soundLocalisation != null)
-                SoundManager.instance.PlayAudio(soundEvent.clip.name, soundEvent.soundLocalisation);
-            else
-                SoundManager.instance.PlayAudio(soundEvent.clip.name, transform);
-        }
+        played = true;
+        if (soundLocalisation != null)
+            SoundManager.instance.PlayAudio(soundEvent.clip.name, soundLocalisation);
+        else
+            SoundManager.instance.PlayAudio(soundEvent.clip.name, transform);
     }
 
     void PlayDialog(DialogInfo info)

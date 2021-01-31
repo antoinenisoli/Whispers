@@ -162,6 +162,7 @@ MonoBehaviour:
     soundLocalisation: {fileID: 7762598822948916906}
   eventArea: {fileID: 7762598822948916906}
   creepyThing: {fileID: 7762598822436385028}
+  onEnter: 1
 --- !u!65 &7762598822716839164
 BoxCollider:
   m_ObjectHideFlags: 0

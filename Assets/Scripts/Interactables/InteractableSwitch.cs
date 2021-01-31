@@ -5,10 +5,14 @@ using UnityEngine;
 public abstract class InteractableSwitch : Interactable
 {
     [Header("SWITCH")]
-    public bool busy;
+    public bool locked;
 
     public virtual void Effect()
     {
-        LaunchSoundEvent();
+        if (playSound && soundEvent)
+        {
+            if (soundEvent.onHold)
+                LaunchSoundEvent();
+        }
     }
 }

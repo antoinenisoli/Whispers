@@ -43,6 +43,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee2ed7258e19124286908801b9dc383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalAmbient: {fileID: 8300000, guid: 8c8e1610ac0aa8a488a0893ccc053d77, type: 3}
+  randomInterval: {x: 25, y: 35}
+  randomSounds:
+  - {fileID: 8300000, guid: f35df9c3475c57e43b12dc07ba6acfe9, type: 3}
+  - {fileID: 8300000, guid: 2973e120dccc8c34f90630dd5bacd21c, type: 3}
+  - {fileID: 8300000, guid: 8758a0989138021499a53b89ffb0226d, type: 3}
+  - {fileID: 8300000, guid: a1b910e63e54c7346b0a8c4eae2fac80, type: 3}
+  - {fileID: 8300000, guid: 3fceb5276c8d0544aa487a1dd5786cd4, type: 3}
+  - {fileID: 8300000, guid: 0ed60e5945744bb41a49e20fae917746, type: 3}
+  - {fileID: 8300000, guid: 210db6b3cab6eff4d871a60c189eab90, type: 3}
+  - {fileID: 8300000, guid: 74cf0404a916a6d4c98f840549e1e767, type: 3}
+  - {fileID: 8300000, guid: 7a0771ec3ee995b4b9cf4b4ea37ffd29, type: 3}
+  - {fileID: 8300000, guid: 3f36b16825473704299ba006a08e08ef, type: 3}
+  - {fileID: 8300000, guid: 0c1615e719cd3cb40a628defa8b1bc8c, type: 3}
+  - {fileID: 8300000, guid: ea48b0e80b6d9a543ae1c70f4d5755b8, type: 3}
+  - {fileID: 8300000, guid: 425492afc7db58842bde2255db8ee01c, type: 3}
   walkSteps:
   - {fileID: 8300000, guid: e33ec9c0c494d3e4ba06664465455861, type: 3}
   - {fileID: 8300000, guid: 8c8c6ceaa765dad4d84a8ed271441c44, type: 3}
@@ -88,12 +104,12 @@ MonoBehaviour:
     volume: 0.079
     pitch: 1
     spatialBlend: 1
-    radius: 10
+    radius: 5
   - clip: {fileID: 8300000, guid: 0509f12e4fbb6c341a6b040dacaa4374, type: 3}
     volume: 0.079
     pitch: 1
     spatialBlend: 1
-    radius: 10
+    radius: 5
   - clip: {fileID: 8300000, guid: 1e36f6a50e93d96448f2c8dbfca7c475, type: 3}
     volume: 0.194
     pitch: 1
@@ -129,3 +145,23 @@ MonoBehaviour:
     pitch: 1
     spatialBlend: 1
     radius: 10
+  - clip: {fileID: 8300000, guid: 781f40eb64c894a43bfdd7be0a24d678, type: 3}
+    volume: 0.188
+    pitch: 1
+    spatialBlend: 1
+    radius: 10
+  - clip: {fileID: 8300000, guid: 8e046c7428d025d4d98d15ae055d1638, type: 3}
+    volume: 0.188
+    pitch: 1
+    spatialBlend: 1
+    radius: 10
+  - clip: {fileID: 8300000, guid: ee2332e376f111c41b5c3535f72d5213, type: 3}
+    volume: 0.307
+    pitch: 1
+    spatialBlend: 0
+    radius: 10
+  - clip: {fileID: 8300000, guid: 747d44f73debfe148bfe644f8e695f7f, type: 3}
+    volume: 0.1
+    pitch: 1
+    spatialBlend: 1
+    radius: 5

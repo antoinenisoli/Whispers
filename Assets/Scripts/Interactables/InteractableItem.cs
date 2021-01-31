@@ -56,6 +56,12 @@ public abstract class InteractableItem : Interactable
         Vector3 eulerAngles = lookAt.eulerAngles;
         lookAt.eulerAngles = eulerAngles;
         transform.DORotateQuaternion(lookAt, 0.5f);
+        
+        if (playSound && soundEvent)
+        {
+            if (soundEvent.onHold)
+                LaunchSoundEvent();
+        }
     }
 
     public virtual void UnInspect()
@@ -64,11 +70,16 @@ public abstract class InteractableItem : Interactable
         transform.DOMove(basePos, 0.5f);
         transform.DORotateQuaternion(baseRotation, 0.5f);
         transform.localScale = baseScale;
-        LaunchSoundEvent();
         if (doorToUnlock && doorToUnlock.locked)
             doorToUnlock.Unlock();
 
         if (doorToLock && !doorToLock.locked)
             doorToLock.Lock();
+
+        if (playSound && soundEvent)
+        {
+            if (soundEvent.onPut)
+                LaunchSoundEvent();
+        }
     }
 }

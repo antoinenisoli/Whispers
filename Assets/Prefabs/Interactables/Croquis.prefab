@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6726378218402166040}
   - component: {fileID: 7042766029767205368}
   - component: {fileID: 5068829049764615474}
-  - component: {fileID: 6726378218402165993}
+  - component: {fileID: 204851486190219717}
   - component: {fileID: 6726378218402165990}
   m_Layer: 9
   m_Name: Croquis
@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6726378218402165991}
-  m_LocalRotation: {x: -0.0000000107872795, y: 0.7071068, z: 0.7071068, w: 0.000000029802326}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.33036855, y: 0.5077199, z: 0.0027072707}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 180.00002}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6726378218402166040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,17 +47,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7bf6702410ad5e40821591415f6bc40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowMat: {fileID: 2100000, guid: 48142c085ad52d747b5e33db0a98dfd6, type: 2}
-  soundEvent:
-    playSound: 0
-    delayAfterEvent: 0
-    clip: {fileID: 0}
-    soundLocalisation: {fileID: 0}
+  busy: 0
   done: 0
+  glowMat: {fileID: 2100000, guid: 48142c085ad52d747b5e33db0a98dfd6, type: 2}
+  playSound: 1
+  soundLocalisation: {fileID: 6202360445022072413}
+  soundEvent: {fileID: 11400000, guid: a619984d0598c8c4687dc8e21faca318, type: 2}
   playDialog: 1
   myDialog: {fileID: 11400000, guid: d831a688aef111d42ad29ce3a5d107b0, type: 2}
-  doorToOpen: {fileID: 0}
-  offset: 0.8
+  doorToUnlock: {fileID: 0}
+  doorToLock: {fileID: 0}
+  offset: 1.2
 --- !u!33 &7042766029767205368
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6726378218402165991}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 3822247309040838107, guid: f12dc532bfadefb43b32b7a5de4c7cd8, type: 3}
 --- !u!23 &5068829049764615474
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -105,7 +105,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6726378218402165993
+--- !u!64 &204851486190219717
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +118,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 3822247309040838107, guid: f12dc532bfadefb43b32b7a5de4c7cd8, type: 3}
 --- !u!54 &6726378218402165990
 Rigidbody:
   m_ObjectHideFlags: 0

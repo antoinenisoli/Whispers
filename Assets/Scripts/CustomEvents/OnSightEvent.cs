@@ -6,7 +6,6 @@ public class OnSightEvent : CustomEvent
 {
     [SerializeField] Transform eventArea;
     [SerializeField] protected GameObject creepyThing;
-    [SerializeField] bool onEnter;
 
     private void Start()
     {
@@ -14,31 +13,14 @@ public class OnSightEvent : CustomEvent
             creepyThing.SetActive(false);
     }
 
-    public override void DoEvent()
+    public IEnumerator ShowThing()
     {
-        base.DoEvent();
-        if (soundEvent.playSound && onEnter)
-        {
-            if (soundEvent.soundLocalisation != null)
-                SoundManager.instance.PlayAudio(soundEvent.clip.name, soundEvent.soundLocalisation);
-            else
-                SoundManager.instance.PlayAudio(soundEvent.clip.name, transform);
-        }
-    }
+        if (playSound && soundEvent.onPut)
+            PlaySound();
 
-    public IEnumerator ExecuteEvent()
-    {
         creepyThing.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         creepyThing.SetActive(false);
-        yield return new WaitForSeconds(soundEvent.delayAfterEvent);
-        if (soundEvent.playSound && !onEnter)
-        {
-            if (soundEvent.soundLocalisation != null)
-                SoundManager.instance.PlayAudio(soundEvent.clip.name, soundEvent.soundLocalisation);
-            else
-                SoundManager.instance.PlayAudio(soundEvent.clip.name, transform);
-        }
     }
 
     public void TriggerCondition()
@@ -54,7 +36,7 @@ public class OnSightEvent : CustomEvent
             if (visible)
             {
                 done = true;
-                StartCoroutine(ExecuteEvent());
+                StartCoroutine(ShowThing());
             }
         }
     }

@@ -47,17 +47,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568bdb35dc3d71e4d8aed6ac6438bdad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowMat: {fileID: 2100000, guid: 0831646613da75446b4e7ac4d68d02b7, type: 2}
-  soundEvent:
-    playSound: 0
-    delayAfterEvent: 0
-    clip: {fileID: 0}
-    soundLocalisation: {fileID: 0}
   done: 0
+  glowMat: {fileID: 2100000, guid: 0831646613da75446b4e7ac4d68d02b7, type: 2}
+  playSound: 1
+  soundLocalisation: {fileID: 2947788219855942786}
+  soundEvent: {fileID: 11400000, guid: 09166613f4fd8b94f8f4dcde53adad03, type: 2}
   playDialog: 1
   myDialog: {fileID: 11400000, guid: 9a1049ebbb6fdf64d80c02b7e9279e70, type: 2}
-  doorToOpen: {fileID: 0}
+  doorToUnlock: {fileID: 0}
+  doorToLock: {fileID: 0}
   busy: 0
+  locked: 0
   audiologProfile: {fileID: 11400000, guid: 339719f148d729d4b9cfa639b537a797, type: 2}
 --- !u!33 &2947788219855940476
 MeshFilter:

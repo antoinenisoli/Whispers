@@ -3,18 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class SoundEvent
-{
-    public bool playSound;
-    public float delayAfterEvent;
-    public AudioClip clip;
-    public Transform soundLocalisation;
-}
-
 public abstract class CustomEvent : MonoBehaviour
 {
+    [SerializeField] protected bool playSound;
+    [SerializeField] Transform soundLocalisation;
     [SerializeField] protected SoundEvent soundEvent;
+    protected bool played;
+
     protected bool done;
     protected bool ready;
     protected Camera viewCam;
@@ -33,8 +28,32 @@ public abstract class CustomEvent : MonoBehaviour
         }
     }
 
+    public virtual void PlaySound()
+    {
+        StartCoroutine(ExecuteSoundEvent());
+    }
+
+    public IEnumerator ExecuteSoundEvent()
+    {
+        yield return new WaitForSeconds(soundEvent.delayAfterEvent);
+        if (!(soundEvent.playOnce && played))
+        {
+            played = true;
+
+            if (soundLocalisation != null)
+                SoundManager.instance.PlayAudio(soundEvent.clip.name, soundLocalisation);
+            else
+                SoundManager.instance.PlayAudio(soundEvent.clip.name, transform);
+        }
+    }
+
     public virtual void DoEvent()
     {
         ready = true;
+        if (playSound && soundEvent)
+        {
+            if (soundEvent.onHold)
+                PlaySound();
+        }
     }
 }

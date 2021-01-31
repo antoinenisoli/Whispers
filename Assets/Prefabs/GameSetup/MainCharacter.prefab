@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewCam: {fileID: 2182197434406877066}
-  cursor: {fileID: 0}
   moveSpeed: 6
   camSensitivity: 150
   camBounds: 60
@@ -99,6 +98,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2182197434406877069}
+  - component: {fileID: 3821932279724916349}
   - component: {fileID: 2182197434406877066}
   - component: {fileID: 2182197434406877067}
   - component: {fileID: 2182197434406877071}
@@ -124,6 +124,19 @@ Transform:
   m_Father: {fileID: 2182197433962588474}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3821932279724916349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2182197434406877064}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 634aa112a516bd5428af578020e53801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 2ae14226a547c584f92b79a353900a1f, type: 2}
 --- !u!20 &2182197434406877066
 Camera:
   m_ObjectHideFlags: 0
@@ -157,7 +170,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: dd05244317eb66d4cb221a0d9e816c1f, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1

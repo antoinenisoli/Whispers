@@ -10,7 +10,6 @@ public class Door : InteractableSwitch
     [SerializeField] float doorAngle = 120;
     Vector3 startRot;
     bool open;
-    public bool locked;
     Vector3 rotation;
 
     public override void Awake()
@@ -47,10 +46,16 @@ public class Door : InteractableSwitch
 
     public override void Effect()
     {
-        base.Effect();
         if (!busy && !locked)
         {
             Switch();
+            if (playSound && soundEvent)
+            {
+                if (open && soundEvent.onHold)
+                    LaunchSoundEvent();
+                else if (soundEvent.onPut)
+                    LaunchSoundEvent();
+            }
         }
     }
 

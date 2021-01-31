@@ -9,7 +9,8 @@ public class EndingEvent : CustomEvent
 {
     [SerializeField] Image fadeScreen;
     [SerializeField] Text endText;
-    [SerializeField] float endingDuration = 5;
+    [SerializeField] float fadeDuration = 5;
+    [SerializeField] Door doorToLock;
 
     private void Start()
     {
@@ -21,15 +22,25 @@ public class EndingEvent : CustomEvent
     {
         base.DoEvent();
         StartCoroutine(EndGame());
-        EventManager.instance.onEndGame.Invoke();
-        fadeScreen.DOFade(1, endingDuration);
-        endText.DOFade(1, endingDuration).SetDelay(1);
-        DOTween.To(() => RenderSettings.fogStartDistance, x => RenderSettings.fogStartDistance = x, -200, endingDuration);
     }
 
     IEnumerator EndGame()
     {
-        yield return new WaitForSeconds(endingDuration + 3);
+        if (doorToLock)
+            doorToLock.Lock();
+
+        yield return new WaitForSeconds(3);
+        DOTween.To(() => RenderSettings.fogStartDistance, x => RenderSettings.fogStartDistance = x, -200, 3);
+        SoundManager.instance.PlayAudio("GazSound", transform);
+
+        yield return new WaitForSeconds(2);
+        EventManager.instance.onEndGame.Invoke();
+
+        yield return new WaitForSeconds(5f);
+        fadeScreen.DOFade(1, fadeDuration);
+        endText.DOFade(1, fadeDuration).SetDelay(1);
+
+        yield return new WaitForSeconds(fadeDuration + 3);
         SceneManager.LoadScene(0);
     }
 }
