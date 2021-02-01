@@ -212,6 +212,7 @@ MonoBehaviour:
   validedScreen: {fileID: 1378610344657260098}
   field: {fileID: 7694754854140994284}
   view: {fileID: 7694754853649987563}
+  eventTotrigger: {fileID: 0}
 --- !u!33 &6551646936035753017
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -489,13 +490,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7694754853649987556}
-  m_LocalRotation: {x: 0.0000004254004, y: -0.7071069, z: -0.70710677, w: 0.00000036750777}
-  m_LocalPosition: {x: -0, y: -1.665, z: 0.394}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: -0.7071068, w: 0}
+  m_LocalPosition: {x: -0, y: -1.044, z: 0.394}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7873413342778422172}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 270, y: 180, z: -0.000015258789}
+  m_LocalEulerAnglesHint: {x: 270, y: 180, z: 0}
 --- !u!1 &7694754854140994286
 GameObject:
   m_ObjectHideFlags: 0

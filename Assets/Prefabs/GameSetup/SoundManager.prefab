@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalAmbient: {fileID: 8300000, guid: 8c8e1610ac0aa8a488a0893ccc053d77, type: 3}
-  randomInterval: {x: 25, y: 35}
+  randomInterval: {x: 35, y: 45}
   randomSounds:
   - {fileID: 8300000, guid: f35df9c3475c57e43b12dc07ba6acfe9, type: 3}
   - {fileID: 8300000, guid: 2973e120dccc8c34f90630dd5bacd21c, type: 3}
@@ -171,12 +171,7 @@ MonoBehaviour:
     spatialBlend: 0
     radius: 5
   - clip: {fileID: 8300000, guid: 2937a89a59631204f89c31dbddc59598, type: 3}
-    volume: 0.2
-    pitch: 1
-    spatialBlend: 1
-    radius: 5
-  - clip: {fileID: 8300000, guid: 2937a89a59631204f89c31dbddc59598, type: 3}
-    volume: 0.2
+    volume: 0.319
     pitch: 1
     spatialBlend: 1
     radius: 5

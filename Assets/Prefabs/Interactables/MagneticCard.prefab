@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5465456505428584444}
   - component: {fileID: 8592085811629159196}
   - component: {fileID: 5825916068929243094}
-  - component: {fileID: 3589500649791858396}
+  - component: {fileID: 9212735695324012456}
   - component: {fileID: 5465456505428583938}
   m_Layer: 9
   m_Name: MagneticCard
@@ -106,8 +106,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3589500649791858396
-MeshCollider:
+--- !u!65 &9212735695324012456
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -116,10 +116,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2028206586088690165, guid: a6dbfb083ba4ec64e9fe745e07c98d0f, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.33200672, y: 0.33208972, z: 0.25978154}
+  m_Center: {x: -0.0030558258, y: -0.022913933, z: -0.010806471}
 --- !u!54 &5465456505428583938
 Rigidbody:
   m_ObjectHideFlags: 0

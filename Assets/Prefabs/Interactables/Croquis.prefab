@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1708546087
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1708546088}
+  m_Layer: 9
+  m_Name: FootstepCroquis
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1708546088
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708546087}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6202360445022072413}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6726378218402165991
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,8 +60,9 @@ Transform:
   m_GameObject: {fileID: 6726378218402165991}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_LocalScale: {x: 0.56764, y: 0.56764, z: 0.56764}
+  m_Children:
+  - {fileID: 1708546088}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51,7 +82,7 @@ MonoBehaviour:
   done: 0
   glowMat: {fileID: 2100000, guid: 48142c085ad52d747b5e33db0a98dfd6, type: 2}
   playSound: 1
-  soundLocalisation: {fileID: 6202360445022072413}
+  soundLocalisation: {fileID: 1708546088}
   soundEvent: {fileID: 11400000, guid: a619984d0598c8c4687dc8e21faca318, type: 2}
   playDialog: 1
   myDialog: {fileID: 11400000, guid: d831a688aef111d42ad29ce3a5d107b0, type: 2}

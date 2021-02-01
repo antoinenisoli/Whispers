@@ -217,12 +217,12 @@ GameObject:
   - component: {fileID: 156105862}
   - component: {fileID: 156105861}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: CreditsImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &156105860
 RectTransform:
   m_ObjectHideFlags: 0
@@ -232,14 +232,14 @@ RectTransform:
   m_GameObject: {fileID: 156105859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2244, y: 1.2244, z: 1.2244}
   m_Children: []
   m_Father: {fileID: 1780238358}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 187.49, y: -145}
+  m_AnchoredPosition: {x: 161, y: -93}
   m_SizeDelta: {x: 374.98987, y: 264.4532}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &156105861
@@ -314,7 +314,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -239, y: -210}
+  m_AnchoredPosition: {x: -239, y: -184}
   m_SizeDelta: {x: 206, y: 106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &238308425
@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 758036295}
   - component: {fileID: 758036294}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -485,7 +485,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1780238358}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -686,7 +686,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1278922026
 RectTransform:
   m_ObjectHideFlags: 0
@@ -960,7 +960,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -238.99998, y: -68}
+  m_AnchoredPosition: {x: -238.99998, y: -42}
   m_SizeDelta: {x: 185, y: 129}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1505895781
@@ -1067,13 +1067,14 @@ GameObject:
   - component: {fileID: 1527803922}
   - component: {fileID: 1527803921}
   - component: {fileID: 1527803920}
+  - component: {fileID: 1527803923}
   m_Layer: 5
   m_Name: Credit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1527803919
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1090,7 +1091,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -238.99998, y: -139}
+  m_AnchoredPosition: {x: -238.99998, y: -113}
   m_SizeDelta: {x: 249, y: 77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1527803920
@@ -1123,7 +1124,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 21300000, guid: f8592ec927ec1334b9985bcd57360f25,
       type: 3}
-    m_PressedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 21300000, guid: f8592ec927ec1334b9985bcd57360f25, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -1136,18 +1137,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1527803921}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 743681519}
-        m_MethodName: LaunchLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1527803921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1185,6 +1175,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527803918}
   m_CullTransparentMesh: 0
+--- !u!114 &1527803923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527803918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 156105859}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 156105859}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1709721786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,7 +1252,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -173.6, y: -145}
+  m_AnchoredPosition: {x: -173.6, y: -119}
   m_SizeDelta: {x: 322.47925, y: 264.45352}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1709721788
@@ -1297,7 +1330,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1481,8 +1514,8 @@ RectTransform:
   - {fileID: 1505895780}
   - {fileID: 1527803919}
   - {fileID: 238308424}
-  - {fileID: 156105860}
   - {fileID: 758036293}
+  - {fileID: 156105860}
   - {fileID: 1278922026}
   m_Father: {fileID: 0}
   m_RootOrder: 0

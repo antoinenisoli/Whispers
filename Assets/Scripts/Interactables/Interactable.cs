@@ -14,12 +14,11 @@ public abstract class Interactable : MonoBehaviour
     [SerializeField] protected Material glowMat;
     protected Material baseMat;
     protected MeshRenderer meshRenderer;
-    protected Collider thisCollider;
 
     [Header("Sound Event")]
     [SerializeField] protected bool playSound;
     protected bool played;
-    [SerializeField] Transform soundLocalisation;
+    [SerializeField] protected Transform soundLocalisation;
     [SerializeField] protected SoundEvent soundEvent;
 
     [Header("Dialog")]
@@ -34,13 +33,12 @@ public abstract class Interactable : MonoBehaviour
     {
         viewCam = Camera.main;
         meshRenderer = GetComponentInChildren<MeshRenderer>();
-        thisCollider = GetComponent<Collider>();
         baseMat = meshRenderer.material;
     }
 
     public virtual void Start()
     {
-        EventManager.instance.OnDialog.AddListener(PlayDialog);
+        EventManager.instance.onDialog.AddListener(PlayDialog);
     }
 
     public virtual void LaunchSoundEvent()
@@ -53,7 +51,7 @@ public abstract class Interactable : MonoBehaviour
     {
         if (playDialog && !busy)
         {
-            EventManager.instance.OnDialog.Invoke(myDialog);
+            EventManager.instance.onDialog.Invoke(myDialog);
             busy = true;
             StartCoroutine(Reset());
         }

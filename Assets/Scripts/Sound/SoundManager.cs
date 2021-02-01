@@ -111,6 +111,7 @@ public class SoundManager : MonoBehaviour
         randomDelay = UnityEngine.Random.Range(randomInterval.x, randomInterval.y);
         int random = UnityEngine.Random.Range(0, randomSounds.Length);
         lastSource = GenerateSound(randomSounds[random]);
+        lastSource.volume = 0.05f;
         lastSource.Play();
         lastSource.gameObject.AddComponent<SelfDestroySFX>();
         delay = 0;

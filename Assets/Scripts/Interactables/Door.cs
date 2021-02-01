@@ -6,12 +6,13 @@ using DG.Tweening;
 public class Door : InteractableSwitch
 {
     [Header("Door")]
+    [SerializeField] MeshCollider doorCollider;
     [SerializeField] float animDuration = 1;
     [SerializeField] float doorAngle = 120;
     Vector3 startRot;
     bool open;
     Vector3 rotation;
-    bool gameEnded;
+    [HideInInspector] public bool finalRoom;
 
     public override void Awake()
     {
@@ -19,25 +20,13 @@ public class Door : InteractableSwitch
         startRot = transform.localRotation.eulerAngles;
     }
 
-    public override void Start()
-    {
-        base.Start();
-        EventManager.instance.onEndGame.AddListener(FinalLock);
-    }
-
-    void FinalLock()
-    {
-        gameEnded = true;
-        thisCollider.isTrigger = false;
-        transform.DOLocalRotate(startRot, 0.3f);
-    }
-
     public void Unlock()
     {
         locked = false;
         open = true;
-        rotation = open ? new Vector3(-90, 0, doorAngle) : startRot;
-        transform.DOLocalRotate(rotation, animDuration);
+        doorCollider.convex = false;
+        EventManager.instance.onDoorUnlocked.Invoke();
+        transform.DOLocalRotate(new Vector3(-90, 0, doorAngle), animDuration);
         SoundManager.instance.PlayAudio("UnlockDoor", transform);
     }
 
@@ -45,10 +34,9 @@ public class Door : InteractableSwitch
     {
         locked = true;
         transform.DOKill();
-        thisCollider.isTrigger = false;
+        doorCollider.convex = true;
         open = false;
-        rotation = open ? new Vector3(-90, 0, doorAngle) : startRot;
-        transform.DOLocalRotate(rotation, animDuration);
+        transform.DOLocalRotate(startRot, animDuration);
         if (open)
             SoundManager.instance.PlayAudio("DoorSqueak", transform);
 
@@ -56,10 +44,22 @@ public class Door : InteractableSwitch
         SoundManager.instance.PlayAudio("LockDoor", transform);
     }
 
+    public void FinalLock()
+    {
+        locked = true;
+        finalRoom = false;
+        transform.DOKill();
+        doorCollider.convex = true;
+        open = false;
+        transform.DOLocalRotate(startRot, 0.2f);
+        SoundManager.instance.PlayAudio("LockDoor", transform);
+    }
+
     void Switch()
     {
         transform.DOKill();
         open = !open;
+        doorCollider.convex = open ? false : true;
         SoundManager.instance.PlayAudio("DoorSqueak", transform);
         StartCoroutine(Reset());
     }
@@ -85,9 +85,12 @@ public class Door : InteractableSwitch
     {
         busy = true;
         yield return new WaitForSeconds(animDuration);
-        thisCollider.isTrigger = open;
         busy = false;
-        rotation = open ? new Vector3(-90, 0, doorAngle) : startRot;
-        transform.DOLocalRotate(rotation, animDuration);
+    }
+
+    private void Update()
+    {
+        if (finalRoom)
+            meshRenderer.material = glowMat;
     }
 }

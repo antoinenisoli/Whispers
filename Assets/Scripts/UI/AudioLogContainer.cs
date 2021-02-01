@@ -14,7 +14,7 @@ public class AudioLogContainer : MonoBehaviour
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        EventManager.instance.OnPlayLog.AddListener(Translation);
+        EventManager.instance.onPlayLog.AddListener(Translation);
         basePos = rectTransform.position;
     }
 

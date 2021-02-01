@@ -13,8 +13,8 @@ public class AudioLog : InteractableSwitch
     IEnumerator End()
     {
         yield return new WaitForSeconds(0.7f);
-        EventManager.instance.OnPlayLog.Invoke(audiologProfile);
-        EventManager.instance.OnDialog.Invoke(audiologProfile);
+        EventManager.instance.onPlayLog.Invoke(audiologProfile);
+        EventManager.instance.onDialog.Invoke(audiologProfile);
         SoundManager.instance.PlayAudio(audiologProfile.clip.name, transform);
         yield return new WaitForSeconds(audiologProfile.clip.length);
         busy = false;
