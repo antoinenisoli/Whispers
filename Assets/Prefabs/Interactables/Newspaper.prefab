@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7bf6702410ad5e40821591415f6bc40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  busy: 0
   done: 0
   glowMat: {fileID: 2100000, guid: 6f95096232c4a6d42bc1ff718ac04d49, type: 2}
   playSound: 1
@@ -56,7 +57,7 @@ MonoBehaviour:
   myDialog: {fileID: 11400000, guid: 46c273e7009df04408470439dbd4fc8e, type: 2}
   doorToUnlock: {fileID: 0}
   doorToLock: {fileID: 0}
-  offset: 0.8
+  offset: 0.6
 --- !u!33 &6918231962083922057
 MeshFilter:
   m_ObjectHideFlags: 0

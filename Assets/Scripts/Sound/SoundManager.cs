@@ -109,7 +109,6 @@ public class SoundManager : MonoBehaviour
     void PlayRandomSound()
     {
         randomDelay = UnityEngine.Random.Range(randomInterval.x, randomInterval.y);
-        print(randomDelay);
         int random = UnityEngine.Random.Range(0, randomSounds.Length);
         lastSource = GenerateSound(randomSounds[random]);
         lastSource.Play();

@@ -23,7 +23,15 @@ public class FPS_Controller : MonoBehaviour
     [SerializeField] float camBounds = 40;
     [SerializeField] [Range(0,1)] float walkCadency = 1f;
     float rotY;
-    float timer;
+    float walkingTime;
+
+    [Header("Head bobbing")]
+    [SerializeField] Transform head;
+    [SerializeField] float bobFrequency;
+    [SerializeField] float bobHorizontalAmplitude = 0.1f;
+    [SerializeField] float bobVerticalAmplitude = 0.1f;
+    [Range(0, 1)] [SerializeField] float headBobSmoothing = 0.1f;
+    Vector3 targetCameraPosition;
 
     [Header("Interactions")]
     [SerializeField] LayerMask interactLayer;
@@ -54,6 +62,8 @@ public class FPS_Controller : MonoBehaviour
     {
         EventManager.instance.onEndGame.AddListener(StopPlayer);
         EventManager.instance.onGameStart.Invoke();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void StopPlayer()
@@ -73,15 +83,15 @@ public class FPS_Controller : MonoBehaviour
 
         if (move.magnitude > 0.1f)
         {
-            timer += Time.deltaTime;
-            if (timer > walkCadency)
+            walkingTime += Time.deltaTime;
+            if (walkingTime > walkCadency)
             {
-                timer = 0;
+                walkingTime = 0;
                 SoundManager.instance.RandomStep();
             }
         }
         else
-            timer = walkCadency/2;
+            walkingTime = walkCadency/2;
     }
 
     void CameraControl()
@@ -177,10 +187,29 @@ public class FPS_Controller : MonoBehaviour
         }
     }
 
+    Vector3 CalculateOffset(float t)
+    {
+        Vector3 offset = Vector3.zero;
+        if (t > 0)
+        {
+            float horizontalOffset = Mathf.Cos(t * bobFrequency) * bobHorizontalAmplitude;
+            float verticalOffset = Mathf.Sin(t * bobFrequency * 2) * bobVerticalAmplitude;
+            offset = head.right * horizontalOffset + head.up * verticalOffset;
+        }
+
+        return offset;
+    }
+
+    void HeadBobbing()
+    {
+        targetCameraPosition = head.transform.position + CalculateOffset(walkingTime);
+        viewCam.transform.position = Vector3.Lerp(viewCam.transform.position, targetCameraPosition, headBobSmoothing);
+        if ((viewCam.transform.position - targetCameraPosition).magnitude <= 0.001f)
+            viewCam.transform.position = targetCameraPosition;
+    }
+
     private void Update()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         if (!isDead)
         {
             Interact();
@@ -189,11 +218,24 @@ public class FPS_Controller : MonoBehaviour
             {
                 FPS_Move();
                 CameraControl();
+                HeadBobbing();
             }
         }
         else
         {
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        }
+
+        if (Input.GetButtonDown("Cancel"))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 }

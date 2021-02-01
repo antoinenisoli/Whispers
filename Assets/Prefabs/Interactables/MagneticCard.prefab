@@ -57,7 +57,7 @@ MonoBehaviour:
   myDialog: {fileID: 11400000, guid: b8008c1426535e14eb4d335c627b2f11, type: 2}
   doorToUnlock: {fileID: 0}
   doorToLock: {fileID: 0}
-  offset: 0.8
+  offset: 0.4
   doorAnimator: {fileID: 0}
 --- !u!33 &8592085811629159196
 MeshFilter:

@@ -36,6 +36,8 @@ public class Door : InteractableSwitch
     {
         locked = false;
         open = true;
+        rotation = open ? new Vector3(-90, 0, doorAngle) : startRot;
+        transform.DOLocalRotate(rotation, animDuration);
         SoundManager.instance.PlayAudio("UnlockDoor", transform);
     }
 
@@ -45,6 +47,8 @@ public class Door : InteractableSwitch
         transform.DOKill();
         thisCollider.isTrigger = false;
         open = false;
+        rotation = open ? new Vector3(-90, 0, doorAngle) : startRot;
+        transform.DOLocalRotate(rotation, animDuration);
         if (open)
             SoundManager.instance.PlayAudio("DoorSqueak", transform);
 
@@ -83,5 +87,7 @@ public class Door : InteractableSwitch
         yield return new WaitForSeconds(animDuration);
         thisCollider.isTrigger = open;
         busy = false;
+        rotation = open ? new Vector3(-90, 0, doorAngle) : startRot;
+        transform.DOLocalRotate(rotation, animDuration);
     }
 }
