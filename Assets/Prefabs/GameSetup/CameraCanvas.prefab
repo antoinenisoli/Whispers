@@ -84,7 +84,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2853075429137521899}
   - component: {fileID: 2853075429137521896}
-  - component: {fileID: 3664826109192688025}
   m_Layer: 5
   m_Name: Blinks
   m_TagString: Untagged
@@ -106,7 +105,7 @@ RectTransform:
   - {fileID: 2853075430676704588}
   - {fileID: 2853075429566337795}
   m_Father: {fileID: 2853075429233516634}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -132,18 +131,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3664826109192688025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2853075429137521898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a628963b16be7c54c9553a5d8df7b0c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2853075429233516582
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,6 +140,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2853075429233516634}
+  - component: {fileID: 7200689818657906570}
   - component: {fileID: 2853075429233516581}
   - component: {fileID: 2853075429233516580}
   - component: {fileID: 2853075429233516583}
@@ -174,6 +162,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 7516254757754328709}
   - {fileID: 2853075429350724259}
   - {fileID: 2853075430332403006}
   - {fileID: 2853075429137521899}
@@ -185,6 +174,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &7200689818657906570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2853075429233516582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a503520e971c80e428097052abfd0184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeScreen: {fileID: 0}
+  endText: {fileID: 0}
+  fadeDuration: 5
+  cursorImage: {fileID: 3193673266793367272}
+  normalCursor: {fileID: 21300000, guid: 9d005519c7a9b7542b407ecc0aa6fbee, type: 3}
+  lockedCursor: {fileID: 21300000, guid: 75c8c35395683814684ec15723c1c377, type: 3}
+  blinkAnim: {fileID: 2853075429137521896}
 --- !u!223 &2853075429233516581
 Canvas:
   m_ObjectHideFlags: 0
@@ -276,7 +284,7 @@ RectTransform:
   m_Children:
   - {fileID: 2853075429873737915}
   m_Father: {fileID: 2853075429233516634}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -308,6 +316,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDialog: {fileID: 11400000, guid: cae0dc6246f2c804981d98f9e7d0cf68, type: 2}
+  dialogText: {fileID: 2853075429873737912}
+  doorText: {fileID: 6753274832572578786}
 --- !u!1 &2853075429566337794
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +481,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2853075430332403006}
   - component: {fileID: 2853075430332403004}
-  - component: {fileID: 5559232259587002757}
   m_Layer: 5
   m_Name: Cursor
   m_TagString: Untagged
@@ -492,7 +501,7 @@ RectTransform:
   m_Children:
   - {fileID: 5023257933255090995}
   m_Father: {fileID: 2853075429233516634}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -507,20 +516,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2853075430332403001}
   m_CullTransparentMesh: 0
---- !u!114 &5559232259587002757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2853075430332403001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dde68e3790811fe4484d1ae5e39cbb33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normal: {fileID: 21300000, guid: 9d005519c7a9b7542b407ecc0aa6fbee, type: 3}
-  locked: {fileID: 21300000, guid: 75c8c35395683814684ec15723c1c377, type: 3}
 --- !u!1 &2853075430676704591
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,3 +590,81 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4385064719097471145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7516254757754328709}
+  - component: {fileID: 8534725797337431019}
+  - component: {fileID: 6753274832572578786}
+  m_Layer: 5
+  m_Name: DoorText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7516254757754328709
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4385064719097471145}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2853075429233516634}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -3, y: 240}
+  m_SizeDelta: {x: -115.57892, y: 86.55525}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8534725797337431019
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4385064719097471145}
+  m_CullTransparentMesh: 0
+--- !u!114 &6753274832572578786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4385064719097471145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 19
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 54
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: You unlocked a door...

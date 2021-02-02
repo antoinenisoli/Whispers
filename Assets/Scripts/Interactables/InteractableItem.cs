@@ -8,10 +8,11 @@ public abstract class InteractableItem : Interactable
 {
     [Header("Item")]
     public float offset = 0.8f;
-    Vector3 basePos;
-    Quaternion baseRotation;
-    Vector3 baseScale;
-    bool isInspected;
+    protected Vector3 basePos;
+    protected Quaternion baseRotation;
+    protected Vector3 baseScale;
+    protected bool isInspected;
+    protected float animDuration = 0.5f;
 
     public override void Awake()
     {
@@ -47,12 +48,12 @@ public abstract class InteractableItem : Interactable
         isInspected = true;
         PlayDialog();
         Vector3 centerOfCamera = viewCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0) + Vector3.forward * offset);
-        transform.DOMove(centerOfCamera, 0.5f);
+        transform.DOMove(centerOfCamera, animDuration);
 
         Quaternion lookAt = Quaternion.LookRotation(player.position - transform.position);
         Vector3 eulerAngles = lookAt.eulerAngles;
         lookAt.eulerAngles = eulerAngles;
-        transform.DORotateQuaternion(lookAt, 0.5f);
+        transform.DORotateQuaternion(lookAt, animDuration);
         
         if (playSound && soundEvent)
         {
@@ -64,8 +65,8 @@ public abstract class InteractableItem : Interactable
     public virtual void UnInspect()
     {
         isInspected = false;
-        transform.DOMove(basePos, 0.5f);
-        transform.DORotateQuaternion(baseRotation, 0.5f);
+        transform.DOMove(basePos, animDuration);
+        transform.DORotateQuaternion(baseRotation, animDuration);
         transform.localScale = baseScale;
         if (doorToUnlock && doorToUnlock.locked)
             doorToUnlock.Unlock();

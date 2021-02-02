@@ -11,6 +11,7 @@ public class Computer : InteractableItem
     [SerializeField] GameObject validedScreen;
     [SerializeField] InputField field;
     [SerializeField] Transform view;
+    [SerializeField] CustomEvent eventTotrigger;
     bool inInspection;
     Vector3 camStartPos;
     Quaternion camStartRot;
@@ -36,6 +37,11 @@ public class Computer : InteractableItem
             if (soundEvent.onHold)
                 LaunchSoundEvent();
         }
+    }
+
+    public override void Rotate(float rotSpeed)
+    {
+        
     }
 
     public override void UnInspect()
@@ -82,6 +88,9 @@ public class Computer : InteractableItem
                     done = true;
                     PlayDialog();
                     validedScreen.SetActive(true);
+                    if (eventTotrigger)
+                        eventTotrigger.ready = true;
+
                     StartCoroutine(Door());
                 }
                 else

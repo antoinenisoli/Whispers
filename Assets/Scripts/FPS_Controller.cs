@@ -10,7 +10,7 @@ using DG.Tweening;
 public class FPS_Controller : MonoBehaviour
 {
     [SerializeField] Camera viewCam;
-    CursorManager cursor;
+    UIManager uiManager;
     Drunk drunk;
     bool doorLocked;
     Rigidbody rb;
@@ -50,7 +50,7 @@ public class FPS_Controller : MonoBehaviour
 
     private void Awake()
     {
-        cursor = FindObjectOfType<CursorManager>();
+        uiManager = FindObjectOfType<UIManager>();
         viewCam = Camera.main;
         rb = GetComponent<Rigidbody>();
         volume = FindObjectOfType<PostProcessVolume>();
@@ -179,10 +179,10 @@ public class FPS_Controller : MonoBehaviour
                 }
             }
 
-            if (cursor)
+            if (uiManager)
             {
-                cursor.Lock(doorLocked);
-                cursor.gameObject.SetActive(detectInteract && !inspectMode);
+                uiManager.LockCursor(doorLocked);
+                uiManager.cursorImage.gameObject.SetActive(detectInteract && !inspectMode);
             }
         }
     }

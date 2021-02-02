@@ -24,12 +24,15 @@ public class MainMenu : MonoBehaviour
         if (playVideo)
         {
             ps1video.Play();
-            yield return new WaitForSeconds((float)ps1video.length);          
+            yield return new WaitForSeconds((float)ps1video.length);
+            image.gameObject.SetActive(true);
+            image.DOFade(0, 0.3f);
         }
         else
+        {
             yield return null;
+        }
 
-        image.DOFade(0, 0.3f);
         image.raycastTarget = false;
         music.Play();
     }

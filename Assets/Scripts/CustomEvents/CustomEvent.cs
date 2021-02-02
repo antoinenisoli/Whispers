@@ -8,10 +8,10 @@ public abstract class CustomEvent : MonoBehaviour
     [SerializeField] protected bool playSound;
     [SerializeField] Transform soundLocalisation;
     [SerializeField] protected SoundEvent soundEvent;
-    protected bool played;
+    protected bool soundPlayed;
 
     protected bool done;
-    protected bool ready;
+    public bool ready;
     protected Camera viewCam;
 
     public virtual void Awake()
@@ -19,17 +19,11 @@ public abstract class CustomEvent : MonoBehaviour
         viewCam = Camera.main;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
-        FPS_Controller character = other.GetComponent<FPS_Controller>();
-        if (character && !ready)
+        if (other.GetComponent<FPS_Controller>() && ready && !done)
         {
             DoEvent();
-            if (playSound && soundEvent)
-            {
-                if (soundEvent.onHold)
-                    PlaySound();
-            }
         }
     }
 
@@ -41,9 +35,9 @@ public abstract class CustomEvent : MonoBehaviour
     public IEnumerator ExecuteSoundEvent()
     {
         yield return new WaitForSeconds(soundEvent.delayAfterEvent);
-        if (!(soundEvent.playOnce && played))
+        if (!(soundEvent.playOnce && soundPlayed))
         {
-            played = true;
+            soundPlayed = true;
 
             if (soundLocalisation != null)
                 SoundManager.instance.PlayAudio(soundEvent.clip.name, soundLocalisation);
@@ -54,6 +48,10 @@ public abstract class CustomEvent : MonoBehaviour
 
     public virtual void DoEvent()
     {
-        ready = true;
+        if (playSound && soundEvent)
+        {
+            if (soundEvent.onHold)
+                PlaySound();
+        }
     }
 }

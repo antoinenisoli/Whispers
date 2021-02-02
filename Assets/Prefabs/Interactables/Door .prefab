@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1491926483152534698}
   - component: {fileID: 6248195502118759508}
   - component: {fileID: 2618069650978044691}
+  - component: {fileID: 2601016747038609665}
   m_Layer: 0
   m_Name: Door_Cadre
   m_TagString: Untagged
@@ -79,6 +80,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &2601016747038609665
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4497533607375401752}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6119001402973771413, guid: 8aa58ce4a74f3154b9bbea98a7c272d8, type: 3}
 --- !u!1 &6846342916792663144
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +106,7 @@ GameObject:
   - component: {fileID: 6846342916792663150}
   - component: {fileID: 4619543447293108791}
   - component: {fileID: 380982627253678730}
-  - component: {fileID: 6846342916792663151}
+  - component: {fileID: 2900467291215106894}
   m_Layer: 9
   m_Name: Door_Porte
   m_TagString: Untagged
@@ -136,6 +151,7 @@ MonoBehaviour:
   doorToUnlock: {fileID: 0}
   doorToLock: {fileID: 0}
   locked: 0
+  doorCollider: {fileID: 2601016747038609665}
   animDuration: 2
   doorAngle: 120
 --- !u!33 &4619543447293108791
@@ -185,7 +201,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6846342916792663151
+--- !u!64 &2900467291215106894
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,7 +209,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6846342916792663144}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1

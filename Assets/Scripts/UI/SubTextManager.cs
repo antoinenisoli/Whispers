@@ -7,18 +7,20 @@ using UnityEngine.UI;
 public class SubTextManager : MonoBehaviour
 {
     [SerializeField] DialogInfo startDialog;
+    [SerializeField] Text dialogText;
+    [SerializeField] Text doorText;
     CanvasGroup group;
-    Text myText;
 
     private IEnumerator Start()
     {
-        EventManager.instance.OnDialog.AddListener(StartDialog);
+        EventManager.instance.onDialog.AddListener(StartDialog);
+        EventManager.instance.onDoorUnlocked.AddListener(UnlockDoor);
         group = GetComponent<CanvasGroup>();
-        myText = GetComponentInChildren<Text>();
         group.DOFade(0, 0f);
+        doorText.DOFade(0, 0f);
 
         yield return new WaitForSeconds(1);
-        EventManager.instance.OnDialog.Invoke(startDialog);
+        EventManager.instance.onDialog.Invoke(startDialog);
     }
 
     IEnumerator End(float delay)
@@ -30,7 +32,19 @@ public class SubTextManager : MonoBehaviour
     void StartDialog(DialogInfo info)
     {
         group.DOFade(1, 0.5f);
-        myText.text = info.subText;
+        dialogText.text = info.subText;
         StartCoroutine(End(info.clip.length));
+    }
+
+    IEnumerator EndDoor()
+    {
+        yield return new WaitForSeconds(5);
+        doorText.DOFade(0, 0.5f);
+    }
+
+    void UnlockDoor()
+    {
+        doorText.DOFade(1, 0.5f);
+        StartCoroutine(EndDoor());
     }
 }

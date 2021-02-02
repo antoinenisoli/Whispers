@@ -50,7 +50,7 @@ MonoBehaviour:
   viewCam: {fileID: 2182197434406877066}
   moveSpeed: 4
   camSensitivity: 150
-  camBounds: 60
+  camBounds: 70
   walkCadency: 0.5
   head: {fileID: 8133302375236240245}
   bobFrequency: 2.5
