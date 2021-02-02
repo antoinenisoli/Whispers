@@ -56,9 +56,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 74cf0404a916a6d4c98f840549e1e767, type: 3}
   - {fileID: 8300000, guid: 7a0771ec3ee995b4b9cf4b4ea37ffd29, type: 3}
   - {fileID: 8300000, guid: 3f36b16825473704299ba006a08e08ef, type: 3}
-  - {fileID: 8300000, guid: 0c1615e719cd3cb40a628defa8b1bc8c, type: 3}
-  - {fileID: 8300000, guid: ea48b0e80b6d9a543ae1c70f4d5755b8, type: 3}
-  - {fileID: 8300000, guid: 425492afc7db58842bde2255db8ee01c, type: 3}
   walkSteps:
   - {fileID: 8300000, guid: e33ec9c0c494d3e4ba06664465455861, type: 3}
   - {fileID: 8300000, guid: 8c8c6ceaa765dad4d84a8ed271441c44, type: 3}
@@ -174,7 +171,7 @@ MonoBehaviour:
     volume: 0.319
     pitch: 1
     spatialBlend: 1
-    radius: 5
+    radius: 10
   - clip: {fileID: 8300000, guid: 7a0771ec3ee995b4b9cf4b4ea37ffd29, type: 3}
     volume: 0.2
     pitch: 1
@@ -231,6 +228,21 @@ MonoBehaviour:
     spatialBlend: 1
     radius: 5
   - clip: {fileID: 8300000, guid: 74cf0404a916a6d4c98f840549e1e767, type: 3}
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 1
+    radius: 5
+  - clip: {fileID: 8300000, guid: fd682bf23d756354092b275a17219c4d, type: 3}
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 1
+    radius: 5
+  - clip: {fileID: 8300000, guid: 61de75ceaf116254a8fa70ad2733b4a5, type: 3}
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 1
+    radius: 5
+  - clip: {fileID: 8300000, guid: b2a8128cbf34d5247aee86fe20e001b1, type: 3}
     volume: 0.2
     pitch: 1
     spatialBlend: 1
