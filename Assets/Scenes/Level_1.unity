@@ -358,6 +358,7 @@ MonoBehaviour:
   soundLocalisation: {fileID: 273380845}
   soundEvent: {fileID: 11400000, guid: 4981d9bdeed19c04db8e004b8c433b76, type: 2}
   ready: 1
+  wait: 0
   creepyThing: {fileID: 0}
   doorToAffect: {fileID: 0}
 --- !u!65 &273380844
@@ -1010,6 +1011,7 @@ MonoBehaviour:
   soundLocalisation: {fileID: 0}
   soundEvent: {fileID: 0}
   ready: 0
+  wait: 0
   creepyThing: {fileID: 0}
   doorToAffect: {fileID: 1924623222}
   eventArea: {fileID: 1798477009}
@@ -1326,6 +1328,7 @@ MonoBehaviour:
   soundLocalisation: {fileID: 322185144}
   soundEvent: {fileID: 11400000, guid: 610f02c149147534d95973d0c059c653, type: 2}
   ready: 1
+  wait: 0
   creepyThing: {fileID: 0}
   doorToAffect: {fileID: 0}
 --- !u!65 &998404978
@@ -1962,6 +1965,7 @@ MonoBehaviour:
   soundLocalisation: {fileID: 0}
   soundEvent: {fileID: 0}
   ready: 0
+  wait: 0
   creepyThing: {fileID: 587134524}
   doorToAffect: {fileID: 0}
   eventArea: {fileID: 1586087558}
@@ -2061,6 +2065,7 @@ MonoBehaviour:
   soundLocalisation: {fileID: 0}
   soundEvent: {fileID: 0}
   ready: 1
+  wait: 0
   creepyThing: {fileID: 2070786029}
   doorToAffect: {fileID: 0}
 --- !u!1 &1769343995
@@ -2124,6 +2129,7 @@ MonoBehaviour:
   soundLocalisation: {fileID: 0}
   soundEvent: {fileID: 0}
   ready: 0
+  wait: 0.15
   creepyThing: {fileID: 9134735643545877619}
   doorToAffect: {fileID: 0}
   eventArea: {fileID: 506278875}
@@ -2483,6 +2489,7 @@ MonoBehaviour:
   soundLocalisation: {fileID: 0}
   soundEvent: {fileID: 0}
   ready: 0
+  wait: 0
   creepyThing: {fileID: 0}
   doorToAffect: {fileID: 1912796471}
   eventArea: {fileID: 1706072226}
@@ -2551,6 +2558,7 @@ MonoBehaviour:
   soundLocalisation: {fileID: 322586595}
   soundEvent: {fileID: 11400000, guid: e74dea8a5e471dc4689762b00e0fdc5e, type: 2}
   ready: 1
+  wait: 0
   creepyThing: {fileID: 0}
   doorToAffect: {fileID: 0}
 --- !u!65 &1917071159
@@ -3097,6 +3105,7 @@ MonoBehaviour:
   soundLocalisation: {fileID: 0}
   soundEvent: {fileID: 0}
   ready: 0
+  wait: 0
   creepyThing: {fileID: 4210906104609598405}
   doorToAffect: {fileID: 0}
   eventArea: {fileID: 7762598823269710508}

@@ -33,7 +33,7 @@ public class GameOverAnimation : MonoBehaviour
         yield return new WaitForSeconds(5);
         finalImage.DOFade(0, 2);
 
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(2f);
         finalImage.sprite = frames[1];
         finalImage.DOFade(1, 2);
 

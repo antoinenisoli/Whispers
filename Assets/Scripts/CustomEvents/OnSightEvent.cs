@@ -35,6 +35,7 @@ public class OnSightEvent : OnEnterEvent
 
         if (translation)
         {
+            yield return new WaitForSeconds(wait);
             creepyThing.transform.DOLocalMove(creepyThing.transform.localPosition + direction * 8, translationDuration);
         }
 

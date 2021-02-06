@@ -8,31 +8,25 @@ using DG.Tweening;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] bool playVideo;
-    [SerializeField] RawImage image;
-    AudioSource music;
-    VideoPlayer ps1video;
+    [SerializeField] Image image;
+    [SerializeField] Image fading;
+    [SerializeField] AudioSource jingle;
+    [SerializeField] AudioSource music;
 
     private void Awake()
     {
-        ps1video = FindObjectOfType<VideoPlayer>();
-        music = GetComponentInChildren<AudioSource>();
+        image.DOFade(0, 0f);
+        fading.DOFade(1, 0f);
     }
 
     private IEnumerator Start()
     {
-        if (playVideo)
-        {
-            ps1video.Play();
-            yield return new WaitForSeconds((float)ps1video.length);
-            image.gameObject.SetActive(true);
-            image.DOFade(0, 0.3f);
-        }
-        else
-        {
-            yield return null;
-        }
-
+        image.raycastTarget = true;
+        image.DOFade(1, 1f);
+        yield return new WaitForSeconds(jingle.clip.length - 0.25f);
+        image.DOFade(0, 1f);
+        fading.DOFade(0, 1f);
+        yield return new WaitForSeconds(1);
         image.raycastTarget = false;
         music.Play();
     }

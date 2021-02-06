@@ -5,6 +5,7 @@ using UnityEngine;
 public class OnEnterEvent : CustomEvent
 {
     [Header("ON ENTER")]
+    [SerializeField] protected float wait = 0;
     [SerializeField] protected GameObject creepyThing;
     [SerializeField] protected Door doorToAffect;
     protected FPS_Controller player;
